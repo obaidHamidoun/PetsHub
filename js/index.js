@@ -9,7 +9,6 @@ function toggleMenu() {
         menu.style = 'opacity:0';
     }
 }
-
 // Show/hide menu when the menu button is clicked
 menuButton.addEventListener('click', toggleMenu);
 menuButton.addEventListener('click', function () {
@@ -20,9 +19,9 @@ menuButton.addEventListener('click', function () {
 
     pagesOfMenu.forEach((button, index) => {
         setTimeout(() => {
-            const delay = (index + 1) * 200 + 200; // Calculate delay for each button
+            const delay = (index + 5) * 100 + 300; // Calculate delay for each button
             button.style.animation = `menuPagesDis ${delay / 1000}s cubic-bezier(0.85, 0, 0.15, 1) forwards`;
-        }, 100 + index * 100);
+        }, 20);
     });
 
 })
