@@ -1,7 +1,6 @@
 /*//////////////////media querries////////////////////*/
 @media (max-width:900px) {
     .pagesDiv{
-        gap:10vmin !important;
         transition:gap 0.5s;
     }
 }
@@ -59,9 +58,9 @@
         text-align:center;font-size:2.5vw !important;
     }
     .DiscoverOurCollection{
-        width:30vw !important;font-size:1.5vw !important;
+        width:25vw !important;font-size:1.5vw !important;
         margin-top:2vw !important;margin-bottom:30vw;
-        transition:background-color 0.4s ;
+        transition:background-color 0.4s;
     }
     .menu.show {
         display: block; 
@@ -130,13 +129,14 @@
 }
 html{
     overflow-x:hidden;
+    background-color: #3D67FF;
 }
 :root{
 --main : #3D67FF ; 
 }
 body{
  overflow-X:hidden;margin-top:15px;
- margin:0;padding:0;
+ margin:0;padding:0;background-color: white;
 }
 .Home{
     background: url('../svg/index/yourPetOurPriority.svg');
@@ -168,7 +168,7 @@ button{
     height: 10vw;
     width: inherit;display: flex;
     justify-content: end;
-    gap: 20vmin;
+    gap: 6vw;
     align-items:center;
     margin-right: 10vw;
 }
@@ -207,9 +207,9 @@ button{
     margin:auto;
 }
 .DiscoverOurCollection{
-    background-color:var(--main);
-    border:none;color:white;font-family:'ExtraBold';
-    width:20vw;border-radius:50vw;border:2px white solid;font-size:1vw;margin-top:2vw;
+    background-color:white;
+    border:none;color:var(--main);font-family:'ExtraBold';
+    width:20vw;border-radius:50vw;border:0.4vw white solid;font-size:1vw;margin-top:2vw;
     margin-bottom:30vw;transition:background-color 0.4s ;
 }
 .AdoptNowButton{
@@ -220,7 +220,7 @@ button{
     box-sizing:border-box;
 }
 .DiscoverOurCollection:hover{
-    background-color:white;color:var(--main);
+    background-color:var(--main);color:white;
     animation : shake 0.4s ease;
 }
 .AdoptNowButton:hover{
@@ -244,8 +244,6 @@ button{
 .close:hover{
     transform:rotateZ(90deg);
 }
-
-
 .ServicesDiv{
     margin-top:6vw;text-align:center;
     display: flex;flex-direction:column;
@@ -286,7 +284,6 @@ background-repeat:no-repeat !important;
 background-size: 10vw 10vw !important;
 background-position:50% 50% !important;
 }
-
 .AdoptIcon{
     width: 20vw;height: 20vw;background:var(--main) url('../svg/index/AdoptIconWhitee.svg');
     background-repeat:no-repeat;background-size: 10vw 10vw;background-position:50% 50%;
@@ -429,18 +426,6 @@ align-items: flex-end;
     border:1px red solid;display:flex;
     flex-direction:column;
 }
-/* .pagesOfMenu{
-    border:1px green solid;width:100vw;height:-webkit-fill-available;
-    display:flex;flex-direction:column;
-    justify-content:space-between;gap:2vw;align-items:center;
-}
-.menuContainer{
-    display:flex;flex-direction:column;
-}
-.pagesOfMenu>button{
-    border:none;width:50vw;height:10vw;background-color:white;
-    font-size:3vw;font-family:'ExtraBold';
-} */
 .menu {
     position: fixed;
     width: 100vw;
