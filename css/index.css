@@ -462,6 +462,9 @@ align-items: flex-end;
     font-family: 'ExtraBold';
     margin-bottom: -50vw;
     border-radius:2vw;
+    box-shadow:     0px 0.4vw #2349d2 , 
+                    0px 0.8vw #2349d2bb ,
+                    0px 0.12vw #2349d27d;
 
 }
 .pagesOfMenu > button:hover{
