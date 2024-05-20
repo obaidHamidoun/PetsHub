@@ -58,7 +58,7 @@
         text-align:center;font-size:2.5vw !important;
     }
     .DiscoverOurCollection{
-        width:25vw !important;font-size:1.5vw !important;
+        width:35vw !important;font-size:1.5vw !important;
         margin-top:2vw !important;margin-bottom:30vw;
         transition:background-color 0.4s;
     }
@@ -70,7 +70,19 @@
     }
     .servicesContainer{
         display: inline !important;
-        justify-content: center;gap:5vw;
+        justify-content: center;gap:10vw;
+    }
+    .PetsExaples{
+        width: 95vw !important;
+    }
+    .exp1 , .exp5{
+        height: 20vw !important;width: 20vw !important;
+    }
+    .exp2 , .exp4{
+        height: 25vw !important;width: 25vw !important;
+    }
+    .exp3{
+        height: 30vw !important;width: 30vw !important;
     }
 }
 
@@ -125,7 +137,7 @@
 
 ::selection {
     color: #F6F372; /* Change the background color */
-    background-color: #3D67FF; /* Change the text color */
+    background-color: #3d67ff00; /* Change the text color */
 }
 html{
     overflow-x:hidden;
@@ -193,7 +205,7 @@ button{
     display:none;
 }
 .PetsApparelMatters{
-    margin-top:70vw;
+    margin-top:75vw;
     display:flex;flex-direction:column;align-items:center;
 }
 .PetsApparelMatters>h1{
@@ -215,7 +227,7 @@ button{
 .AdoptNowButton{
     background-color:var(--main);
     border:none;color:white;font-family:'ExtraBold';
-    width:20vw;border-radius:50vw;border:2px white solid;font-size:1vw;margin-top:2vw;
+    width:26vw;border-radius:50vw;font-size:1.3vw;margin-top:2vw;
     margin-bottom:5vw;transition:background-color 0.4s , border 0.4s ;
     box-sizing:border-box;
 }
@@ -391,10 +403,14 @@ align-items: flex-end;
 }
 .socials{
     width:50vw;height:10vw;margin-bottom:2vw;
-    display:flex;align-items:center;justify-content:center;gap:2vw;
+    display:flex;align-items:center;
+    justify-content:center;gap:2vw;
 }
 .socials>div{
     cursor:pointer;
+}
+.socials>div:hover{
+    animation: shake 0.4s;
 }
 .socials> .WhatsappLink{
     background:url('../images/index/whatsappIcon.png');
@@ -478,3 +494,43 @@ align-items: flex-end;
     background-size:contain;
     background-position:50% 50%;text-decoration:none !important;
 }
+.srcs{
+    background-color:var(--main);
+    width: 100vw;height: auto;
+}
+small{
+    text-align: center;
+}
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgb(255, 255, 255 , 0.8);
+    backdrop-filter: blur(50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure loading screen is on top of everything */
+  }
+  
+  .spinner {
+    width: 6vw;
+    height: 6vw;
+    border: 3px solid #ffffff; /* Color of the spinner */
+    border-top: 3px solid var(--main); /* Color of the spinner's moving part */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    color: #2349d2;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
