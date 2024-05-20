@@ -42,3 +42,12 @@ close.addEventListener('click', function () {
 
 })
 
+window.addEventListener('load', function() {
+    var loadingScreen = document.getElementById('loading-screen');
+    var mainContent = document.getElementById('main-content');
+  
+    // Hide loading screen and show main content once everything is loaded
+    loadingScreen.style.display = 'none';
+    mainContent.style.display = 'block';
+  });
+
