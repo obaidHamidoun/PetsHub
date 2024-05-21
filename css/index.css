@@ -3,6 +3,9 @@
     .pagesDiv{
         transition:gap 0.5s;
     }
+    .pagesDiv{
+        margin-right: 2vw !important ;
+    }
 }
 @media(min-width:1000PX){
     .Home{
@@ -13,10 +16,14 @@
         width: 97vw !important;
         padding: 2vw !important;
         transform: translateX(3vw);
+        align-items:center !important;
     }
     .PetsApparelMatters {
         margin-top: 55vw !important;
 
+    }
+    .pagesDiv{
+        margin-right: 4vw !important ;
     }
 }
 @media (max-width:700px){
@@ -33,7 +40,7 @@
         display:none !important;
     }
     header{
-        width:80vw !important;margin: auto;display:flex;
+        width:90vw !important;margin: auto;display:flex;
         align-items:center;
         justify-content:space-between;
     }
@@ -119,7 +126,7 @@
 
 @keyframes fade{
     0%{opacity:0;bottom:-100vh;transform: scale(0.5);}
-    100%{opacity:1;bottom:0;transform: scale(1);}
+    100%{opacitay:1;bottom:0;transform: scale(1);}
 }
 @keyframes Backfade{
     0%{opacity:1;bottom:0;transform: scale(1);}
@@ -155,8 +162,8 @@ body{
     background-repeat: no-repeat;background-size: 100vw auto;
 }
 header{
-width:100vw;height:10vw;font-size: 2vw;
-padding:5vw;display: flex;overflow: hidden;
+width:100vw;height:20vw;font-size: 2vw;
+padding:5vw;display: flex;align-items:center;overflow: hidden;
 }
 
 .MainLogo{
@@ -182,7 +189,7 @@ button{
     justify-content: end;
     gap: 6vw;
     align-items:center;
-    margin-right: 10vw;
+    margin-right: 4vw;
 }
 .pages{
     gap: 8vmin;
@@ -265,6 +272,7 @@ button{
 .servicesTitle {
     text-align: center;color: var(--main);
     font-family: 'ExtraBold';font-size: 6vw;
+    margin-bottom: 4vw;
 }
 .servicesContainer{
     display: flex;
@@ -277,6 +285,7 @@ button{
 .AdoptDes , .daycareDes , .ShopDes{
     color:var(--main);font-size:2vw;
     text-align: center;font-family: 'ExtraBold';
+    margin-top:2vw;
 }
 .DayCareIcon{
     width: 20vw;height: 20vw;background:var(--main) url('../svg/index/daycareicon.svg');
@@ -334,7 +343,7 @@ background-size: 10vw 10vw !important;
 background-position:50% 50% !important;
 }
 .adoptNow{
-   width: 100%;margin-top:2vw;
+   width: 100%;    margin-top: 10vw;
     display: flex;flex-direction: column;justify-content: center;align-items: center;
 }
 .adopttitle {
