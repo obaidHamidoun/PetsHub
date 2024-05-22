@@ -9,32 +9,47 @@
     <link rel="stylesheet" href="../css/signup.css">
 </head>
 <body>
-    <header>
-        <div class="backButton"></div>
-    </header>
-    <h1>sign Up</h1>
+
+    <h1 class="signUpTit">sign Up</h1>
 
 <section class="formOfSignUp">
 <form class="signupForm">
 <label for="fname">First name :</label><br>
-<input type="text" name="fname">
+<small class="ferror" id="content"></small>
+<input type="text" name="fname" id="fname">
 <label for="lname">Last name :</label><br>
-<input type="text" name="lname">
+<input type="text" name="lname" id="lname">
 <label for="email">Email :</label><br>
-<input type="email" name="email">
+<input type="email" name="email" id="email">
 <label for="phone">Phone Number :</label><br>
-<input type="text" name="phone">
-<label for="password">Password :</label><br>
-<input type="text" name="password">
-<label for="rpass">Repeat Password :</label><br>
-<input type="text" name="rpass">
+<input type="text" name="phone" id="phone">
+<label for="password" class="pass">Password :</label><br>
+<input type="text" name="password" id="password">
+<label for="rpass" class="rpass">Repeat Password :</label><br>
+<input type="text" name="rpass" id="rpass">
 <div class="signUpDiv">
     <button type="submit" name="signUpButton" class="signUpButton">Sign Up</button>
+</div>
+<div class="signINLink">
+    <a>Have an account? <span style="font-weight: bold;" class="logInA">Log in</span></a>
 </div>
 
 </form>
 </section>
 
+<script src="../js/signup.js"></script>
+<script>
+        // Function to update the content with a smooth transition
+        function updateContent() {
+            var contentElement = document.getElementById('content');
+            contentElement.style.opacity = 0;
+            setTimeout(function() {
+                contentElement.style.opacity = 1;
+            }, 300);
+        }
+        setTimeout(updateContent, 2000);
+    </script>
 
+</script>
 </body>
 </html>
