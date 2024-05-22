@@ -13,28 +13,41 @@
     <h1 class="signUpTit">sign Up</h1>
 
 <section class="formOfSignUp">
-<form class="signupForm">
-<label for="fname">First name :</label><br>
-<small class="ferror" id="content"></small>
-<input type="text" name="fname" id="fname">
-<label for="lname">Last name :</label><br>
-<input type="text" name="lname" id="lname">
-<label for="email">Email :</label><br>
-<input type="email" name="email" id="email">
-<label for="phone">Phone Number :</label><br>
-<input type="text" name="phone" id="phone">
-<label for="password" class="pass">Password :</label><br>
-<input type="text" name="password" id="password">
-<label for="rpass" class="rpass">Repeat Password :</label><br>
-<input type="text" name="rpass" id="rpass">
-<div class="signUpDiv">
-    <button type="submit" name="signUpButton" class="signUpButton">Sign Up</button>
-</div>
-<div class="signINLink">
-    <a>Have an account? <span style="font-weight: bold;" class="logInA">Log in</span></a>
-</div>
+    <form class="signupForm" id="signUpform">
 
-</form>
+        <label for="fname">First name :</label><br>
+        <small class="ferror error" id="content"></small>
+        <input type="text" name="fname" id="fname">
+    
+        <label for="lname">Last name :</label><br>
+        <small class="lerror error" id="content"></small>
+        <input type="text" name="lname" id="lname">
+    
+        <label for="email">Email :</label><br>
+        <small class="Eerror error" id="content"></small>
+        <input type="email" name="email" id="email">
+    
+        <label for="phone">Phone Number :</label><br>
+        <small class="pherror error" id="content"></small>
+        <input type="text" name="phone" id="phone">
+    
+        <label for="password" class="pass">Password :</label><br>
+        <small class="perror error" id="content"></small>
+        <input type="password" name="password" id="password">
+    
+        <label for="rpass" class="rpass">Repeat Password :</label><br>
+        <small class="rerror error" id="content"></small>
+        <input type="password" name="rpass" id="rpass">
+
+    
+            <div class="signUpDiv">
+                <button type="submit" name="signUpButton" class="signUpButton">Sign Up</button>
+            </div>
+            <div class="signINLink">
+                <a>Have an account? <span style="font-weight: bold;" class="logInA">Log in</span></a>
+            </div>
+        
+    </form>
 </section>
 
 <script src="../js/signup.js"></script>
