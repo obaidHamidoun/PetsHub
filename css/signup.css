@@ -1,7 +1,7 @@
-@media (max-width:800px){
-    header{
-        width:90vw !important;height:20vw !important;
-    }
+@media (max-width:1000px){
+    /* p , label{
+        font-size: 2.5vw !important;
+    } */
 
 }
 /*fonts*/
@@ -23,7 +23,7 @@
 
 @media (max-width:800px){
 
-    header{height:20vw !important;}
+    header{height:20vw !important}
     .backButton{
         width:7vw !important; height :7vw !important;
     }
@@ -37,18 +37,33 @@
     header{
         margin-top:10vw !important;
     }
+    .signUpTit{
+        margin-top:20vw !important;
+    }
+    /* p , label{
+        font-size: 3.5vw !important;
+    } */
+    /* body{
+     height: 100vh !important;
+    } */
 
 }
 /*animation*/
-@keyframes menuPagesDis{
-    0%{margin-bottom:-50vw;}
-    100%{margin-bottom:2vw}
+#content {
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Define transition properties */
+}
+@keyframes shake {
+    0% { transform: rotateZ(0); }
+    25% { transform: rotateZ(-5deg); }
+    50% { transform: rotateZ(5deg); }
+    75% { transform: rotateZ(-5deg); }
+    100% { transform: rotateZ(0); }
 }
 /*styles*/
 body{
-    display;flex;flex-direction:column;
+    display:flex;flex-direction:column;
     text-align:center;justify-content:center;color:var(--main);
-    height:100vh;
 }
 
 html{
@@ -58,11 +73,18 @@ html{
 --main : #3D67FF ; 
 }
 
+*::-webkit-scrollbar{
+    display: none;
+    }  
+    ::selection {
+        color: #F6F372; /* Change the background color */
+        background-color: #3d67ff00; /* Change the text color */
+    }
 header{
     width:100vw;height:10vw;font-size: 2vw;
-    padding:5vw;display: flex;align-items:start;overflow: hidden;
-    margin:auto;padding:4vw;margin-top:2vw;
+    padding:5vw;display: flex;align-items:start;overflow: hidden;padding:4vw;margin-top:2vw;
 }
+
 .backButton{
     width:5vw ; height :5vw;
     background:url('../svg/signup/backarr.svg');
@@ -72,19 +94,24 @@ header{
 h1{
     font-family:'ExtraBold';
 }
+.signUpTit{
+    margin-top: 5vw;
+}
 .empt{
     width:10vw ; height :10vw;
 }
+/* p , label{
+    font-size: 1.5vw ;
+} */
 .formOfSignUp{
 margin-top: 3vw;
 width:100vw;
 display:flex;
-display;flex;justify-content:center;
+display:flex;justify-content:center;
 
 }
 .signupForm{
     width:40vw;text-align:left;
-    animation : menuPagesDis 0.7s ease forwards;
 }
 .signupForm>input{
     width:100%;
@@ -105,8 +132,11 @@ display;flex;justify-content:center;
 .signUpButton{
     margin:auto;
 }
+.signUpButton:hover{
+    animation : shake 0.4s ease;
+}
 .signUpDiv{
-    width:100%;display:flex;margin-top:1.5vw;
+    width:100%;display:flex;margin-top:3vw;
 }
 .signUpButton{
     border:none;background-color:var(--main);color:white;
@@ -116,7 +146,18 @@ display;flex;justify-content:center;
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus,{
+input:-webkit-autofill:focus{
     background-color: rgba(61, 103, 255 , 0.5) !important; /* Background color */
     color: red !important;
 }
+.signINLink{
+width: 100%;text-align: center;margin-top:2.5vw;
+margin-bottom: 15vw;
+}
+.logInA{
+    text-decoration: underline 1px var(--main);cursor: pointer;
+}
+.ferror{
+    color: red !important;
+}
+
