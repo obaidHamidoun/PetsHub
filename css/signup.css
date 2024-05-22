@@ -32,6 +32,9 @@
     .signUpTit{
         margin-top:10vw !important;
     }
+    body{
+        height: 100vh !important;
+    }
 
 }
 /*animation*/
