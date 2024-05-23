@@ -47,10 +47,13 @@
     .frgtpass {
         margin-top: 3vw !important;
     }
+    .signInTitle {
+        margin-top: -10vw !important;
+    }
 
 }
 /*animation*/
-#content {k
+#content {
     opacity: 1;
     transition: opacity 0.3s ease; /* Define transition properties */
 }
