@@ -13,12 +13,68 @@
     .title{
         font-size:4vw !important;
     }
+
+
+}
+
+
+@media (max-width:1000px){
+    .product{
+        width: 30% !important;
+        margin: 1.2vw !important;
+        margin: 1vw;border-radius: 2vw !important;
+    }
+
+    .product-Pic{
+        height: 20vw !important;
+        border-radius: 1.5vw !important;
+    }
+    .addToCart{
+        font-size: 1vw !important;
+        padding: 1vw !important;
+    }
+    .BuyNow{
+        font-size: 1vw !important;
+        padding: 1vw !important;
+    }
+    .proNameDiv{
+        font-size: 2vw !important;
+    }
+    .ProPrice>p{
+    font-size:3.2vw !important;font-family: 'ExtraBold';
+    color: var(--main);
+    width: 94% !important;
+    }
+    .ProCat{
+        width: 100% !important;font-size: 1.3vw !important;
+        margin-bottom: 0.8vw !important;
+    }
+}
+
+@media (max-width:600px){
+    header{
+        height: 20vw !important;
+    }
+    .MainLogo{
+        width: 14vw !important;height: 14vw !important;
+    }
+    .menuButton{
+        display:inline !important;
+        width: 8vw !important;height: 8vw !important;
+    }
+    .title{
+        font-size:5vw !important;
+    }
+
     .product{
         width: 50% !important;
         margin: 1.2vw !important;
+        margin: 1vw;border-radius: 2vw !important;
     }
+
     .product-Pic{
         height: 30vw !important;
+        border-radius: 1.5vw !important;
     }
     .addToCart{
         font-size: 2.4vw !important;
@@ -39,23 +95,6 @@
     .ProCat{
         width: 100% !important;font-size: 2.6vw !important;
         margin-bottom: 0.8vw !important;
-    }
-
-}
-
-@media (max-width:600px){
-    header{
-        height: 20vw !important;
-    }
-    .MainLogo{
-        width: 14vw !important;height: 14vw !important;
-    }
-    .menuButton{
-        display:inline !important;
-        width: 8vw !important;height: 8vw !important;
-    }
-    .title{
-        font-size:5vw !important;
     }
 }
 
