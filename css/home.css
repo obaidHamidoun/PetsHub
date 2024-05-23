@@ -1,26 +1,6 @@
-
-@media (max-width:800px){
-    header{
-     height: 15vw !important;
-    }
-    .MainLogo{
-        width: 9vw !important;height: 9vw !important;
-    }
-    .menuButton{
-        display:inline !important;
-        width: 5vw !important;height: 5vw !important;
-    }
-    .title{
-        font-size:4vw !important;
-    }
-
-
-}
-
-
 @media (max-width:1000px){
     .product{
-        width: 30% !important;
+        width: 35% !important;
         margin: 1.2vw !important;
         margin: 1vw;border-radius: 2vw !important;
     }
@@ -29,13 +9,13 @@
         height: 20vw !important;
         border-radius: 1.5vw !important;
     }
+    /* .addToCart{
+        font-size: 1vw !important;
+        padding: 1vw !important;
+    } */
     .addToCart{
-        font-size: 1vw !important;
-        padding: 1vw !important;
-    }
-    .BuyNow{
-        font-size: 1vw !important;
-        padding: 1vw !important;
+        width: 45% !important;
+
     }
     .proNameDiv{
         font-size: 2vw !important;
@@ -51,31 +31,56 @@
     }
 }
 
+@media (max-width:800px){
+
+    .title{
+        font-size:4vw !important;
+    }
+
+    .headerContainer{
+        height: 15vw !important;
+        width:90vw !important;
+    }
+
+    .menuButton {
+        width: 5vw !important;
+        height: 5vw !important;
+    }
+    .MainLogo {
+        width: 10vw !important;
+        height: 10vw !important;
+    }
+
+}
+
 @media (max-width:600px){
-    header{
+    
+    .headerContainer{
         height: 20vw !important;
+        width:90vw !important;
     }
-    .MainLogo{
-        width: 14vw !important;height: 14vw !important;
+    .menuButton {
+        width: 7vw !important;
+        height: 7vw !important;
     }
-    .menuButton{
-        display:inline !important;
-        width: 8vw !important;height: 8vw !important;
+    .MainLogo {
+        width: 15vw !important;
+        height: 15vw !important;
     }
+
     .title{
         font-size:5vw !important;
-        text-align: center;
     }
 
     .product{
         width: 50% !important;
         margin: 1.2vw !important;
-        margin: 1vw;border-radius: 2vw !important;
+        margin: 1vw;border-radius: 3vw !important;
     }
 
     .product-Pic{
         height: 30vw !important;
-        border-radius: 1.5vw !important;
+        border-radius: 2.5vw !important;
     }
     .addToCart{
         font-size: 2.4vw !important;
@@ -97,7 +102,16 @@
         width: 100% !important;font-size: 2.6vw !important;
         margin-bottom: 0.8vw !important;
     }
+    .addToCart{
+        width: auto !important;
+
+    }
 }
+
+
+
+
+
 
 /*/////////////////////fonts/////////////////////////////*/
 
@@ -161,51 +175,22 @@ body{
     z-index: 9999; /* Ensure loading screen is on top of everything */
   }
   
-  .spinner {
-    width: 6vw;
-    height: 6vw;
-    border: 3px solid #ffffff; /* Color of the spinner */
-    border-top: 3px solid var(--main); /* Color of the spinner's moving part */
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    color: #2349d2;
-  }
   
-header{
-height: 8vw;display: flex;
-flex-direction: row;justify-content: space-between;
-padding:5vw;display: flex;align-items:center;overflow: hidden;position: sticky;top: 0;
-z-index: 2;
-background-color: #ffffffc2;
-backdrop-filter: blur(10px);
-}
-.MainLogo{
-    width: 7vw;height: 7vw;
-    background:url('../images/index/petshubblue.png');
-    background-repeat:no-repeat !important;
-    background-size:contain !important;
-    transition: background 0.2s;cursor:pointer;
-}
+
+
 .MainLogo:hover{
     animation : shake 0.4s ease;
     background:url('../images/index/petshubbluelogo.png') !important;
 background-repeat:no-repeat !important;background-size:contain !important;
 }
-.menuButton{
-    display:inline !important;
-    width: 4vw;height: 4vw;
-    background:url('../svg/index/menuButton.svg');
-    background-repeat:no-repeat;
-    background-size:contain;cursor:pointer;
-    background-position:50% 50%;
-}
+
 
 .title{
     font-size:2.75vw;color: var(--main);
     font-family: 'ExtraBold';
 }
 main{
-    width: 100vw;padding:6vw;
+    width: 100vw;padding:10vw;
 }
 .newProducts{
     width: 100%;
@@ -220,7 +205,7 @@ main{
     box-shadow: 0px 0px 30px 4px #EDEDED;
     position: relative;
     z-index: 1;display: flex;flex-direction: column;justify-content: center;
-    align-items: center;padding: 0.5vw;
+    align-items: center;padding: 0.5vw;    margin-left: 0 !important;
 }
 .ToysAndAcc{
     margin-top: 2vw;
@@ -262,11 +247,11 @@ p{
 }
 .addToCart{
     border: 1px var(--main) solid ;color: var(--main) ;background-color: white;
-    font-size: 0.9vw;border-radius: 50px;padding: 1.2vw;width: 45%;
+    font-size: 0.9vw;border-radius: 50px;padding: 1.2vw;
 }
 .BuyNow{
     border: 1px var(--main) solid ;color: white ;background-color: var(--main);
-    font-size: 0.7vw;border-radius: 50px;padding: 0.8vw;width: 45%; 
+    font-size: 1vw;border-radius: 50px;padding: 0.8vw;width: 45%; 
     transition: box-shadow 0.2s;
 }
 
@@ -285,4 +270,46 @@ animation: shake 0.4s;
 }
 .addToCart:hover{
     transition:all 0.3s;
+}
+.headerContainer{
+    height: 10vw ;
+    font-size: 2vw ;
+    width:90vw ;
+    padding: 5vw ;
+    display: flex ;
+    align-items: center ;    box-sizing: border-box ;
+    overflow: hidden ;justify-content: space-between ;
+
+
+}
+header{
+    overflow: hidden ;
+    display:flex ;
+    justify-content:center ;
+    position: sticky ;top: 0 ;
+z-index: 2 ;
+background-color: #ffffffc2 ;
+backdrop-filter: blur(10px) ;
+}
+.menuButton {
+    display: inline ;
+    width: 3.5vw ;
+    height: 3.5vw ;
+    background: url(../svg/index/menuButton.svg) ;
+    background-repeat: no-repeat ;
+    background-size: contain ;
+    cursor: pointer ;
+    background-position: 50% 50% ;
+}
+.MainLogo {
+    width: 7vw ;
+    height: 7vw ;
+    background: url(../images/index/petshubblue.png);
+    background-repeat: no-repeat ;
+    background-size: contain ;
+    transition: background 0.2s ;
+    cursor: pointer ;
+}
+.ToysAndAcc {
+    margin-top: 5vw;
 }
