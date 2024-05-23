@@ -64,6 +64,7 @@
     }
     .title{
         font-size:5vw !important;
+        text-align: center;
     }
 
     .product{
@@ -211,12 +212,12 @@ main{
 }
 .products{
     width: 100%;
-    display: flex;overflow-x:scroll !important;
+    display: flex;
 }
 .product{
-    background-color: rgb(255, 255, 255) ;width: 20% ;
+    background-color: rgb(255, 255, 255) ;width: 25% ;
     margin: 1vw;border-radius: 1.04vw;
-    box-shadow: 0px 0px 10px 4px #EDEDED;
+    box-shadow: 0px 0px 30px 4px #EDEDED;
     position: relative;
     z-index: 1;display: flex;flex-direction: column;justify-content: center;
     align-items: center;padding: 0.5vw;
@@ -228,7 +229,7 @@ main{
     width: 100%;
 }
 .product-Pic{
-    height: 10vw;
+    height: 15vw;
     background-color: #7AFFB7;border-radius: 0.9vw;
     margin-bottom: 1vw !important;
 }
@@ -248,12 +249,12 @@ main{
     width: 96% !important;
 }
 .ProPrice>p{
-font-size:2vw;font-family: 'ExtraBold';
+font-size:2.5vw;font-family: 'ExtraBold';
 color: var(--main);
 width: 96% !important;
 }
 .ProCat{
-    width: 100% !important;font-size: 0.8vw;
+    width: 100% !important;font-size: 1.2vw;
     color: #002CCE;margin-bottom: 0.5vw;
 }
 p{
@@ -261,11 +262,27 @@ p{
 }
 .addToCart{
     border: 1px var(--main) solid ;color: var(--main) ;background-color: white;
-    font-size: 0.7vw;border-radius: 50px;padding: 0.8vw;width: 45%;
+    font-size: 0.9vw;border-radius: 50px;padding: 1.2vw;width: 45%;
 }
 .BuyNow{
     border: 1px var(--main) solid ;color: white ;background-color: var(--main);
     font-size: 0.7vw;border-radius: 50px;padding: 0.8vw;width: 45%; 
+    transition: box-shadow 0.2s;
 }
 
+.BuyNow:hover{
+animation: shake 0.4s;
+}
 
+.BuyNow:active{
+    box-shadow: 0px 0px 10px 2px #3d67ff69;
+}
+.addToCart:active{
+    box-shadow: 0px 0px 10px 2px #3d67ff69;
+}
+.addToCart:hover{
+ color: white;background-color: var(--main);
+}
+.addToCart:hover{
+    transition:all 0.3s;
+}
