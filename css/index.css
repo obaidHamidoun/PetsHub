@@ -464,7 +464,7 @@ align-items: flex-end;
 .menuContainer {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
 }
 .pagesOfMenu {
     display: flex;
@@ -542,4 +542,3 @@ small{
       transform: rotate(360deg);
     }
   }
-  
