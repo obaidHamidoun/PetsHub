@@ -159,7 +159,6 @@ function validateForm() {
     validatePassword();
     validateRepeatPassword();
 
-    // Check if any error messages are displayed
     const errorMessages = form.querySelectorAll('.error');
     let isValid = true;
     errorMessages.forEach(message => {
@@ -173,7 +172,9 @@ function validateForm() {
 
 form.addEventListener('submit', function (event) {
     if (!validateForm()) {
-        event.preventDefault(); // Prevent form submission if validation fails
+        event.preventDefault();
+    }else{
+        window.location.href = '../html/home.html';
     }
 });
 
