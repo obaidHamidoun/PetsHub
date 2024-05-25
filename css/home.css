@@ -3,6 +3,7 @@
         width: 35% !important;
         margin: 1.2vw !important;
         margin: 1vw;border-radius: 2vw !important;
+        padding:1.5vw !important;
     }
 
 
@@ -44,6 +45,7 @@
         width: 100% !important;font-size: 1.3vw !important;
         margin-bottom: 0.8vw !important;
     } */
+    
 }
 
 @media (max-width:800px){
@@ -67,6 +69,7 @@
     }
     .product{
         width:50% !important;
+        padding:2vw !important;
     }
     .product-Pic{
         height:29vw !important;
@@ -110,6 +113,7 @@
         width: 60% !important;
         margin: 1.2vw !important;
         margin: 1vw;border-radius: 3vw !important;
+        padding:2.5vw !important;
     }
 
     .product-Pic{
@@ -136,9 +140,6 @@
     .ProCat{
         width: 100% !important;font-size: 2.6vw !important;
         margin-bottom: 0.8vw !important;
-    }
-    .product{
-        border: 1vw #f1f4ff solid;
     }
 }
 
@@ -336,6 +337,9 @@ backdrop-filter: blur(10px) ;
     cursor: pointer ;
     background-position: 50% 50% ;
 }
+.menuButton:hover{
+    animation:shake 0.4s ease;
+}
 .MainLogo {
     width: 7vw ;
     height: 7vw ;
@@ -357,19 +361,19 @@ backdrop-filter: blur(10px) ;
 }
 
 .product {
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(white 45%, #d6ddff 150%);
     width: 25%;
     margin: 1vw;
     border-radius: 1.04vw;
-    border: 0.6vw #f1f4ff solid;
     position: relative;
-    z-index: 2; /* Ensure the product elements are above other elements */
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0.5vw;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0; 
+    padding:1vw;
 }
 
 
