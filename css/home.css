@@ -86,6 +86,7 @@
         font-size: 1.9vw !important;
     }
 
+
 }
 
 @media (max-width:600px){
@@ -140,6 +141,9 @@
     .ProCat{
         width: 100% !important;font-size: 2.6vw !important;
         margin-bottom: 0.8vw !important;
+    }
+    .sidebar{
+        width:100% !important;
     }
 }
 
@@ -382,3 +386,59 @@ backdrop-filter: blur(10px) ;
     width: 100%;
     overflow-x: hidden; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sidebar {
+    position: fixed;
+    z-index:3;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background-color:#3d67ff87;
+    backdrop-filter:blur(20px);
+    padding: 2vw;
+    display:flex;flex-direction:column;
+    align-items:center;
+}
+.UserProfilePicture{
+    background-color:white;
+    width:180px;height:180px;
+    border-radius:100px;
+}
+.pages{
+    border:1px red solid;width:65%;
+    margin-top:4vw;
+}
+.page{
+    height:40px;margin:1vw;
+    display:flex;align-items:center;
+}
+.PageIcon{
+    height:40px;width:40px;border:green solid 1px;
+}
+.page>h4{
+    color:white;margin-bottom:0 !important;
+    margin-left:4px;
+}
+
+
+
+
