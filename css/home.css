@@ -138,7 +138,7 @@
         margin-bottom: 0.8vw !important;
     }
     .product{
-        border: 1vw #f1f4ff solid !important;
+        border: 1vw #f1f4ff solid;
     }
 }
 
@@ -353,9 +353,7 @@ backdrop-filter: blur(10px) ;
 .products {
     display: flex;
     flex-wrap: nowrap; /* Prevent items from wrapping */
-    overflow-x: auto; 
-    /* padding: 2vw; */
-    overflow: visible;
+    overflow-x: auto;  /* Enable horizontal scrolling */    /* Optional: Adjust padding as needed */
 }
 
 .product {
