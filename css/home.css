@@ -85,7 +85,10 @@
         padding: 1.5vw !important;
         font-size: 1.9vw !important;
     }
-
+    .closeButton {
+        width: 5vw !important;
+        height: 5vw !important;
+    }
 
 }
 
@@ -145,6 +148,10 @@
     .sidebar{
         width:100% !important;
     }
+    .closeButton{
+            width: 7vw !important;
+            height: 7vw !important;
+    }
 }
 
 
@@ -178,7 +185,14 @@
     100% { transform: rotateZ(0); }
 }
 
-
+@keyframes slide{
+    0%{
+        transform: translateX(500px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
 /*/////////////////////////style////////////////////////////////*/
 ::selection {
     color: #F6F372;
@@ -198,6 +212,7 @@ body{
  overflow: auto;margin-top:15px;
  margin:0;padding:0;background-color: white;
  font-family: 'Medium';
+ height:100vh;
 }
 
 #loading-screen {
@@ -211,7 +226,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Ensure loading screen is on top of everything */
+    z-index: 5;
   }
   
   
@@ -327,7 +342,7 @@ header{
     display:flex ;
     justify-content:center ;
     position: sticky ;top: 0 ;
-z-index: 2 ;
+z-index: 3 ;
 background-color: #ffffffc2 ;
 backdrop-filter: blur(10px) ;
 }
@@ -407,7 +422,7 @@ backdrop-filter: blur(10px) ;
 
 .sidebar {
     position: fixed;
-    z-index:3;
+    z-index:4;
     top: 0;
     right: 0;
     width: 400px;
@@ -417,6 +432,7 @@ backdrop-filter: blur(10px) ;
     padding: 2vw;
     display:flex;flex-direction:column;
     align-items:center;
+    transform: translateX(500px);
 }
 .UserProfilePicture{
     background-color:white;
@@ -438,7 +454,15 @@ backdrop-filter: blur(10px) ;
     color:white;margin-bottom:0 !important;
     margin-left:4px;
 }
-
+.siideBarSet{
+    border:1px green solid;width:90%;
+    height:5vw;overflow:hidden;
+}
+.closeButton{
+    width: 3.5vw;height: 3.5vw;background:url('../svg/index/closeButton.svg');
+    background-size:contain;background-position:50% 50%;
+    float:right;
+}
 
 
 
