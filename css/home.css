@@ -57,6 +57,9 @@
     .closeButton{
         width: 3.5vw !important;height: 3.5vw !important;
     }
+    .UserPfp{
+       width: calc(40vw * 0.3) !important;height: calc(40vw * 0.3) !important;
+    }
     
 }
 
@@ -111,6 +114,9 @@
     }
     .closeButton{
         width: 4vw !important;height: 4vw !important;
+    }
+    .UserPfp{
+       width: calc(40vw * 0.35) !important;height: calc(40vw * 0.35) !important;
     }
 }
 
@@ -175,6 +181,12 @@
     }
     .closeButton{
         width: 7vw !important;height: 7vw !important;
+    }
+    .UserPfp{
+       width: calc(40vw * 0.4) !important;height: calc(40vw * 0.4) !important;
+    }
+    .UserName{
+        font-size: 3vw !important;
     }
 }
 
@@ -456,4 +468,13 @@ nav{
 .closeButton:hover{
     transform: rotate(90deg);
 }
-
+.UserPfp{
+   width: calc(40vw * 0.25);height: calc(40vw * 0.25) ;
+   margin: auto;background:url('../svg/home/Userprofile.svg');
+   background-position: 50% 50%;background-repeat: no-repeat;background-size: contain;
+   border-radius:100vw;
+}
+.UserName{
+    color: white;text-align: center;
+    font-size: 2vw;
+}
