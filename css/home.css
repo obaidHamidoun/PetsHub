@@ -168,7 +168,7 @@
         margin-bottom: 0.8vw !important;
     }
     nav{
-        width: 50vw !important;padding: 6vw !important;
+        width: 70vw !important;padding: 6vw !important;
     }
     .headerOfNav{
         height: 10vw !important;display: flex;align-items: center;justify-content:end;
@@ -451,6 +451,9 @@ nav{
     width: 3vw;height: 3vw;background:url('../svg/index/closeButton.svg');
     background-repeat:no-repeat;background-position:50% 50%;background-size:contain;
     float:right;cursor: pointer;
+    transition:transform 0.4s;
 }
-
+.closeButton:hover{
+    transform: rotate(90deg);
+}
 
