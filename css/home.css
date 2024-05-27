@@ -183,7 +183,7 @@
         width: 7vw !important;height: 7vw !important;
     }
     .UserPfp{
-       width: calc(40vw * 0.4) !important;height: calc(40vw * 0.4) !important;
+       width: calc(40vw * 0.7) !important;height: calc(40vw * 0.7) !important;
     }
     .UserName{
         font-size: 3vw !important;
