@@ -60,6 +60,13 @@
     .UserPfp{
        width: calc(40vw * 0.3) !important;height: calc(40vw * 0.3) !important;
     }
+    .page{
+        height: 3.3vw !important;
+    }
+    .PageIcon{
+        height: 3.3vw !important;width: 3.3vw !important;
+    }
+
     
 }
 
@@ -118,6 +125,7 @@
     .UserPfp{
        width: calc(40vw * 0.35) !important;height: calc(40vw * 0.35) !important;
     }
+
 }
 
 @media (max-width:600px){
@@ -187,6 +195,15 @@
     }
     .UserName{
         font-size: 3vw !important;
+    }
+    .page{
+        height: 6vw !important;
+    }
+    .PageIcon{
+        height: 6vw !important;width: 6vw !important;
+    }
+    .page>p{
+        font-size: 4vw !important;
     }
 }
 
@@ -476,5 +493,26 @@ nav{
 }
 .UserName{
     color: white;text-align: center;
+    font-size: 2vw;margin-bottom:8vw;
+}
+.pages{
+    display: flex;flex-direction: column;
+    height: -webkit-fill-content;color: white;
+}
+.page{
+    height: 3vw;
+    display: flex;gap: 2px;
+    align-items: center;padding: 2vw;
+    cursor: pointer;margin-bottom: 1vw;
+}
+.PageIcon{
+    height: 3vw;width: 3vw ;
+}
+.page>p{
     font-size: 2vw;
+}
+.HomePage{
+    background:url('../svg/home/HomeIcon.svg');
+    
+    background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
 }
