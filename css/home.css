@@ -586,6 +586,7 @@ nav{
 .UserName{
     color: white;text-align: center;
     font-size: 1.4vw;margin-bottom:2vw !important;
+    font-size: 'ExtraBold';
 }
 .pages{
     display: flex;flex-direction: column;
@@ -599,10 +600,11 @@ nav{
     cursor: pointer;border-radius: 20px;
     height: 3vw;
     transition: all 0.3s;
+    padding: 2vw;
+    
 }
 .page:hover{
-    background-color: #2d5aff3c;
-    backdrop-filter: blur(10px);
+    background:linear-gradient(90deg, rgba(99,129,235,0) 0%, rgba(61,103,255,0.3) 50%, rgba(99,129,235,0) 100%);
 }
 .PageIcon{
     height: 3vw;width: 3vw ;
@@ -629,4 +631,7 @@ nav{
 .SettingsPage{
     background:url('../svg/home/Settings.svg');
     background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
+}
+.page{
+    font-family: 'ExtraBold';
 }
