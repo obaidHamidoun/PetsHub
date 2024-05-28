@@ -66,6 +66,9 @@
     .PageIcon{
         height: 3.3vw !important;width: 3.3vw !important;
     }
+    .page{
+        height: 3.3vw !important;
+    }
 
     
 }
@@ -127,8 +130,87 @@
     }
 
 }
-
 @media (max-width:600px){
+
+    .title{
+        font-size:4vw !important;
+    }
+
+    .headerContainer{
+        height: 15vw !important;
+        width:90vw !important;
+    }
+
+    .menuButton {
+        width: 5vw !important;
+        height: 5vw !important;
+    }
+    .MainLogo {
+        width: 10vw !important;
+        height: 10vw !important;
+    }
+    .product{
+        width:50% !important;
+        padding:2vw !important;
+    }
+    .product-Pic{
+        height:29vw !important;
+    }
+    .ProPrice>p {
+        font-size:4.2vw !important;
+    }
+    .BuyNow{
+        padding: 1.5vw !important;
+        font-size: 1.9vw !important;
+    }
+    .addToCart{
+        padding: 1.5vw !important;
+        font-size: 1.9vw !important;
+    }
+    .siideBarSet{
+        height:5vw !important;
+    }
+    .closeButton{
+        width: 4vw !important;height:4vw !important;
+    }
+    nav{
+        width: 50vw !important;
+    }
+    .headerOfNav{
+        height: 6.5vw !important;
+    }
+    .closeButton{
+        width: 4vw !important;height: 4vw !important;
+    }
+    .UserPfp{
+       width: calc(40vw * 0.45) !important;height: calc(40vw * 0.45) !important;
+    }
+
+
+
+
+    .PageIcon {
+        height: 6vw !important;
+        width: 6vw !important;
+    }
+    .page{
+        height: 6vw !important;
+    }
+    .page>p{
+        font-size: 2vw !important;
+    }
+    .UserName{
+margin-bottom:4vw !important;
+    }
+    .pages{
+gap:2vw !important;    
+    }
+    .UserName{
+        font-size: 2vw !important;
+    }
+
+}
+@media (max-width:400px){
     header{
         padding-top: 4vw !important;
     }
@@ -182,7 +264,7 @@
         margin-bottom: 0.8vw !important;
     }
     nav{
-        width: 70vw !important;padding: 6vw !important;
+        width: 96vw !important;padding: 6vw !important;
     }
     .headerOfNav{
         height: 10vw !important;display: flex;align-items: center;justify-content:end;
@@ -190,20 +272,29 @@
     .closeButton{
         width: 7vw !important;height: 7vw !important;
     }
-    .UserPfp{
-       width: calc(40vw * 0.7) !important;height: calc(40vw * 0.7) !important;
+    .UserPfp {
+            width: calc(40vw* 1) !important;
+            height: calc(40vw* 1) !important;
     }
     .UserName{
-        font-size: 3vw !important;
+        font-size: 5vw !important;
+    }
+
+    .PageIcon {
+        height: 10vw !important;
+        width: 10vw !important;
     }
     .page{
-        height: 6vw !important;
-    }
-    .PageIcon{
-        height: 6vw !important;width: 6vw !important;
+        height: 10vw !important;
     }
     .page>p{
         font-size: 4vw !important;
+    }
+    .UserName{
+margin-bottom:8vw !important;
+    }
+    .pages{
+gap:3vw !important;    
     }
 }
 
@@ -468,10 +559,11 @@ backdrop-filter: blur(10px) ;
 nav{
     width: 30vw ;background-color: #3863fd8c;
     backdrop-filter: blur(10px);
-    height: 95vh;position: fixed;top: 0;right: 0;
+    height: 98vh;position: fixed;top: 0;right: 0;
     z-index: 4;border-radius: 10px;margin: 10px;
     padding: 2vw;
     transform: scale3d(0,0,0);
+    overflow: auto !important;
 }
 .headerOfNav{
     height: 4vw;
@@ -493,26 +585,48 @@ nav{
 }
 .UserName{
     color: white;text-align: center;
-    font-size: 2vw;margin-bottom:8vw;
+    font-size: 1.4vw;margin-bottom:2vw !important;
 }
 .pages{
     display: flex;flex-direction: column;
-    height: -webkit-fill-content;color: white;
+    color: white;gap:1vw;
+
 }
 .page{
-    height: 3vw;
-    display: flex;gap: 2px;
+    display: flex;gap: 1vw;
     align-items: center;padding: 2vw;
-    cursor: pointer;margin-bottom: 1vw;
+    cursor: pointer;
+    cursor: pointer;border-radius: 20px;
+    height: 3vw;
+    transition: all 0.3s;
+}
+.page:hover{
+    background-color: #2d5aff3c;
+    backdrop-filter: blur(10px);
 }
 .PageIcon{
     height: 3vw;width: 3vw ;
 }
 .page>p{
-    font-size: 2vw;
+    font-size: 1.6vw;
 }
 .HomePage{
     background:url('../svg/home/HomeIcon.svg');
-    
+    background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
+}
+.ShopPage{
+    background:url('../svg/home/shopbag.svg');
+    background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
+}
+.DayCarePage{
+    background:url('../svg/home/DayCare.svg');
+    background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
+}
+.CartPage{
+    background:url('../svg/home/Cart.svg');
+    background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
+}
+.SettingsPage{
+    background:url('../svg/home/Settings.svg');
     background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
 }
