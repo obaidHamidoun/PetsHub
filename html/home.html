@@ -17,7 +17,7 @@
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
         <dotlottie-player src="https://lottie.host/3ba0221d-89e6-4669-a13c-225a73069cf7/ACDmsI1oFx.json" background="transparent" speed="1" style="width: 10vw; height: 10vw;" loop autoplay></dotlottie-player>
       </div>
-
+      
 <nav>
 
     <div class="headerOfNav">
@@ -32,6 +32,31 @@
         <div class="PageIcon HomePage"></div>
         <p>Home</p>
       </div>
+
+
+      <div class="page">
+        <div class="PageIcon ShopPage"></div>
+        <p>Shop</p>
+      </div>
+
+
+      <div class="page">
+        <div class="PageIcon CartPage"></div>
+        <p>Cart</p>
+      </div>
+
+
+      <div class="page">
+        <div class="PageIcon DayCarePage"></div>
+        <p>Daycare</p>
+      </div>
+
+
+      <div class="page">
+        <div class="PageIcon SettingsPage"></div>
+        <p>Settings</p>
+      </div>
+
 
     </div>
 
@@ -70,14 +95,26 @@
                     <button class="BuyNow">Buy now</button>
                 </div>
             </div>
-            <!-- Add more product divs as needed -->
+         
         </div>
     </section>
 
     <section class="ToysAndAcc">
         <h2 class="toysAcc title">Toys and Accessories</h2>
         <div class="products toys-acces">
-            <!-- Toys and Accessories Products -->
+
+            <div class="products new">
+                <div class="product">
+                    <div class="product-Pic"></div>
+                    <div class="proNameDiv"><p>Product 1</p></div>
+                    <div class="ProPrice"><p>23 MAD</p></div>
+                    <div class="ProCat"><p> Food </p></div>
+                    <div class="buyCart">
+                        <button class="addToCart">Add To Cart</button>
+                        <button class="BuyNow">Buy now</button>
+                    </div>
+                </div>
+
         </div>
     </section>
 </main>
@@ -99,7 +136,7 @@ function scrollToSection(sectionId) {
     var loadingScreen = document.getElementById('loading-screen');
     var mainContent = document.getElementById('main-content');
   
-    // Hide loading screen and show main content once everything is loaded
+
     loadingScreen.style.display = 'none';
     mainContent.style.display = 'block';
   });
