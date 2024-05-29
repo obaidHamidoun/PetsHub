@@ -142,9 +142,9 @@
            font-size: 2.4vw !important;
        }
        .MorePets{
-        padding:1.5vw 2vw 1.5vw 2vw !important;
+        padding: 2.5vw 5vw 2.5vw 5vw !important;
         font-size: 2.5vw !important;width: 20vw !important;
-        gap: 5vw !important;
+        gap: 5vw !important;width: 30vw !important;
     }
     .daycareService{
         height: 100vw !important;background: url('../svg/home/PetDaycareServiceMobile.svg') !important;
@@ -156,6 +156,13 @@
         padding: 3vw;color: white;
         border-radius: 0px 0vw 0vw 0px !important;
         text-align: center !important;
+    }
+    .DayCareServInfo>p{
+        margin-top: 2vw;
+        font-size: 2.8vw !important;
+    }
+    .joinNow{
+        font-size: 4vw !important;
     }
 }
 @media (max-width:600px){
