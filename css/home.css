@@ -144,6 +144,18 @@
        .MorePets{
         padding:1.5vw 2vw 1.5vw 2vw !important;
         font-size: 2.5vw !important;width: 20vw !important;
+        gap: 5vw !important;
+    }
+    .daycareService{
+        height: 100vw !important;background: url('../svg/home/PetDaycareServiceMobile.svg') !important;
+        background-repeat: no-repeat !important;background-size: contain !important;
+        background-position: 0% 100% !important;
+    }
+    .DayCareServInfo{
+        width: 100vw !important;height: auto;
+        padding: 3vw;color: white;
+        border-radius: 0px 0vw 0vw 0px !important;
+        text-align: center !important;
     }
 }
 @media (max-width:600px){
@@ -231,6 +243,7 @@ gap:2vw !important;
     .TypeOfpet{
         font-size: 3.4vw !important;
     }
+
 
 }
 @media (max-width:400px){
@@ -666,14 +679,12 @@ nav{
 .page{
     font-family: 'ExtraBold';
 }
-.product:active{
-    transform: scale3d(0.95,0.95,0.95);
-}
+
 .ToysAndAcc{
     margin-bottom: 2vw !important;
 }
 .PetsToAdopt{
-    margin-top: 2vw;
+    margin-top: 4vw;
 }
 .availablePets{
     display: grid;
@@ -736,4 +747,18 @@ nav{
 }
 .MorePets:hover{
     animation: shake 0.4s ;
+}
+.daycareService{
+    height: 50vw;background: url('../svg/home/petDaycareservice.svg');
+    background-repeat: no-repeat;background-size: contain;width: 100vw;
+    background-position: 0% 100%;
+}
+.DayCareServInfo{
+    width: 75vw;height: auto;
+    background-color: var(--main);
+    padding: 5vw;color: white;
+    border-radius: 0px 100vw 100vw 0px;
+}
+.DayCareServInfo>p{
+    font-size: 2vw;
 }
