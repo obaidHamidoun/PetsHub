@@ -147,33 +147,11 @@
         gap: 5vw !important;width: 30vw !important;
     }
     .daycareService{
-        height: 100vw !important;background: var(--main)  url('../svg/home/PetsMobileDes.svg') !important;
+        height: 100vw !important;background: var(--main)  url('../svg/home/PetDaycareServiceMobile.svg') !important;
         background-repeat: no-repeat !important;background-size: cover !important;
         background-position: 0% 100% !important;
         width: 100vw;
         position: relative;
-    }
-    .JoinMobileButton{
-        display: inline-block !important;
-        position: absolute;bottom: 0;
-        right: 50%;
-    transform: translateX(50%);
-    
-    }
-    .DayCareServInfo{
-        width: 100vw !important;height: auto;
-        padding: 3vw;color: white;
-        border-radius: 0px 0vw 0vw 0px !important;
-        text-align: center !important;
-        padding: 7vw 5vw 5vw 5vw !important;
-        display: none !important;
-    }
-    .DayCareServInfo>p{
-        margin-top: 2vw;
-        font-size: 2.8vw !important;
-    }
-    .joinNow{
-        font-size: 3vw !important;
     }
     footer{
        height:18vw !important;align-items: center !important;
@@ -192,6 +170,16 @@
     }
     .socials> .FooterLogo{
         width:12% !important;height:7vw !important;
+    }
+    .DayCareServInfo{
+        width:95vw !important;border-radius:4vw!important;
+        text-align:center !important;margin:auto;
+    }
+    .DayCareServInfo > p{
+        font-size:2.5vw !important;
+    }
+    .joinNow{
+        font-size:2.5vw !important;
     }
 }
 @media (max-width:600px){
@@ -537,15 +525,17 @@ p{
 .BuyNow{
     border: 1px var(--main) solid ;color: white ;background-color: var(--main);
     font-size: 1vw;border-radius: 50px;padding: 0.8vw;width: 45%; 
-    transition: box-shadow 0.2s;
+    transition: all 0.2s;
 }
 
 .BuyNow:hover{
 animation: shake 0.4s;
+
 }
 
 .BuyNow:active{
     box-shadow: 0px 0px 10px 2px #3d67ff69;
+    color:var(--main);border:1px var(--main);background-color:white;
 }
 .addToCart:active{
     box-shadow: 0px 0px 10px 2px #3d67ff69;
@@ -646,10 +636,11 @@ nav{
     padding: 2vw;
     transform: scale3d(0,0,0);
     overflow: auto !important;
+    box-shadow: 0px 0px 30px -2px #5352a0d6;
 }
 .headerOfNav{
     height: 4vw;display: flex;align-items: center;
-    justify-content: space-between;
+    justify-content: end;
 }
 .closeButton{
     width: 3vw;height: 3vw;background:url('../svg/index/closeButton.svg');
@@ -692,7 +683,7 @@ nav{
     
 }
 .page:hover{
-    background:linear-gradient(90deg, rgba(135, 161, 255, 0.872) 0%, rgba(104, 137, 255, 0.575) 50%, rgba(99, 128, 235, 0.388) 100%);
+    background:linear-gradient(90deg, rgb(135 161 255 / 0%) 0%, rgba(104, 137, 255, 0.575) 20%, rgb(99 128 235 / 0%) 100%)
 }
 .PageIcon{
     height: 3vw;width: 3vw ;
@@ -723,7 +714,9 @@ nav{
 .page{
     font-family: 'ExtraBold';
 }
-
+.page:hover .PageIcon {
+    animation: shake 0.4s;
+}
 .ToysAndAcc{
     margin-bottom: 2vw !important;
 }
@@ -818,13 +811,10 @@ nav{
     background-repeat: no-repeat;background-size: contain;width: 100vw;
     background-position: 0% 100%;
 }
-.DayCareServInfo{
-display: block;
-}
 .joinNow{
     background-color: white;padding: 1vw 3vw 1vw 3vw;
     border: none;border-radius: 50vw;color:var(--main);
-    font-family: 'ExtraBold';
+    font-family: 'ExtraBold';font-size:1.5vw;
 }
 
 footer{
@@ -874,13 +864,23 @@ footer{
     display: flex;justify-content: center;
     overflow: hidden;
 }
-.ICON{
-
-   background: url('../images/index/whiteIcon.png') ;
-   background-repeat:no-repeat ;
-   background-size:contain ;
-   height: 5vw ;width: 5vw ;
-}
 .JoinMobileButton{
     display: none;
+}
+.DayCareServInfo{
+    width:70vw;background:var(--main);margin-bottom:3vw;
+    padding:4vw 10vw;border-radius:0px 100vw 100vw 0px;
+}
+.DayCareServInfo > p{
+    font-size: 1.5vw;
+    color:white;
+}
+.joinNow:hover{
+animation:shake 0.4s;
+}
+.joinNow:active{
+    background-color:var(--main);color:white;border:1px white solid;
+}
+hr{
+    color:var(--main);
 }
