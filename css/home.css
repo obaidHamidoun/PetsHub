@@ -147,22 +147,51 @@
         gap: 5vw !important;width: 30vw !important;
     }
     .daycareService{
-        height: 100vw !important;background: url('../svg/home/PetDaycareServiceMobile.svg') !important;
-        background-repeat: no-repeat !important;background-size: contain !important;
+        height: 100vw !important;background: var(--main)  url('../svg/home/PetsMobileDes.svg') !important;
+        background-repeat: no-repeat !important;background-size: cover !important;
         background-position: 0% 100% !important;
+        width: 100vw;
+        position: relative;
+    }
+    .JoinMobileButton{
+        display: inline-block !important;
+        position: absolute;bottom: 0;
+        right: 50%;
+    transform: translateX(50%);
+    
     }
     .DayCareServInfo{
         width: 100vw !important;height: auto;
         padding: 3vw;color: white;
         border-radius: 0px 0vw 0vw 0px !important;
         text-align: center !important;
+        padding: 7vw 5vw 5vw 5vw !important;
+        display: none !important;
     }
     .DayCareServInfo>p{
         margin-top: 2vw;
         font-size: 2.8vw !important;
     }
     .joinNow{
-        font-size: 4vw !important;
+        font-size: 3vw !important;
+    }
+    footer{
+       height:18vw !important;align-items: center !important;
+    }
+    .socials> .WhatsappLink{
+        width:12% !important;height:7vw !important;
+    }
+    .socials> .InstagramLink{
+        width:12% !important;height:7vw !important;
+    }
+    .socials> .FacebookLink{
+        width:12% !important;height:7vw !important;
+    }
+    .socials> .XLink{
+        width:12% !important;height:7vw !important;
+    }
+    .socials> .FooterLogo{
+        width:12% !important;height:7vw !important;
     }
 }
 @media (max-width:600px){
@@ -255,7 +284,7 @@ gap:2vw !important;
         padding: 3.5vw !important;
     }
 }
-@media (max-width:400px){
+@media (max-width:500px){
     header{
         padding-top: 4vw !important;
     }
@@ -341,6 +370,10 @@ margin-bottom:8vw !important;
     .pages{
 gap:3vw !important;    
     }
+
+    .ICON{
+        height: 10vw !important;width: 10vw !important;
+     }
 }
 
 
@@ -606,7 +639,7 @@ backdrop-filter: blur(10px) ;
     overflow-x: hidden; 
 }
 nav{
-    width: 30vw ;background-color: #3863fd8c;
+    width: 30vw ;background-color: #3863fd;
     backdrop-filter: blur(10px);
     height: 98vh;position: fixed;top: 0;right: 0;
     z-index: 4;border-radius: 10px;margin: 10px;
@@ -615,7 +648,8 @@ nav{
     overflow: auto !important;
 }
 .headerOfNav{
-    height: 4vw;
+    height: 4vw;display: flex;align-items: center;
+    justify-content: space-between;
 }
 .closeButton{
     width: 3vw;height: 3vw;background:url('../svg/index/closeButton.svg');
@@ -658,7 +692,7 @@ nav{
     
 }
 .page:hover{
-    background:linear-gradient(90deg, rgba(99,129,235,0) 0%, rgba(61,103,255,0.3) 50%, rgba(99,129,235,0) 100%);
+    background:linear-gradient(90deg, rgba(135, 161, 255, 0.872) 0%, rgba(104, 137, 255, 0.575) 50%, rgba(99, 128, 235, 0.388) 100%);
 }
 .PageIcon{
     height: 3vw;width: 3vw ;
@@ -785,14 +819,68 @@ nav{
     background-position: 0% 100%;
 }
 .DayCareServInfo{
-    width: 75vw;height: auto;
-    background-color: var(--main);
-    padding: 3vw 4vw 1vw 7vw;color: white;
-    border-radius: 0px 100vw 100vw 0px;
-
+display: block;
 }
 .joinNow{
     background-color: white;padding: 1vw 3vw 1vw 3vw;
     border: none;border-radius: 50vw;color:var(--main);
     font-family: 'ExtraBold';
+}
+
+footer{
+    background-color: var(--main);
+}
+
+
+.socials{
+    width:50vw;height:10vw;
+    display:flex;align-items:center;
+    justify-content:center;gap:2vw;
+}
+.socials>div{
+    cursor:pointer;
+}
+.socials>div:hover{
+    animation: shake 0.4s;
+}
+.socials> .WhatsappLink{
+    background:url('../images/index/whatsappIcon.png');
+    background-size:contain;background-repeat:no-repeat;
+    background-position:50% 50%;width:5%;height:2.5vw;
+}
+.socials> .InstagramLink{
+    background:url('../images/index/instagramIcon.png');
+    background-size:contain;background-repeat:no-repeat;
+    background-position:50% 50%;width:5%;height:2.5vw;
+}
+.socials> .FacebookLink{
+    background:url('../images/index/facebookIcon.png');
+    background-size:contain;background-repeat:no-repeat;
+    background-position:50% 50%;width:10%;height:5vw;
+}
+.socials> .XLink{
+    background:url('../images/index/XIcon.png');
+    background-size:contain;background-repeat:no-repeat;
+    background-position:50% 50%;width:10%;height:5vw;
+}
+.socials> .FooterLogo{
+    background:url('../images/index/whiteIcon.png');
+    background-size:contain;background-repeat:no-repeat;
+    background-position:50% 50%;width:20%;height:10vw;
+}
+footer{
+    width:100vw;height:10vw;
+    background:var(--main);
+    display: flex;justify-content: center;
+    overflow: hidden;
+}
+.ICON{
+
+   background: url('../images/index/whiteIcon.png') ;
+   background-repeat:no-repeat ;
+   background-size:contain ;
+   height: 5vw ;width: 5vw ;
+}
+.JoinMobileButton{
+    display: none;
 }
