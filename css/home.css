@@ -244,7 +244,9 @@ gap:2vw !important;
         font-size: 3.4vw !important;
     }
 
-
+    .availablePets{
+        padding: 3.5vw !important;
+    }
 }
 @media (max-width:400px){
     header{
@@ -527,6 +529,7 @@ animation: shake 0.4s;
 }
 button{
     cursor: pointer;
+    font-family: 'ExtraBold';
 }
 header{
     overflow: hidden ;
@@ -684,7 +687,7 @@ nav{
     margin-bottom: 2vw !important;
 }
 .PetsToAdopt{
-    margin-top: 4vw;
+    margin-top: 6vw;
 }
 .availablePets{
     display: grid;
@@ -697,7 +700,6 @@ nav{
     border-radius: 1.5vw;margin-bottom: 1vw;
     display: flex;flex-direction: column;justify-content: end;padding: 2vw;
     cursor: pointer;  transition: transform 0.3s cubic-bezier(0.85, 0, 0.15, 1);
-    box-shadow: 0px 0px 30px 0px #9e9e9eab;
 }
 .containerOfPet:hover{
     transform: scale3d(0.95,0.95,0.95);
@@ -715,20 +717,42 @@ nav{
     margin: 0;color: white;
 }
 .example1{
-    background:url('../images/home/PetAdoptExamples/CatExample1.jpg');
+    background: url('../images/home/PetAdoptExamples/CatExample1.jpg') ;
     background-repeat:no-repeat;background-position: 50% 50%;background-size: cover;
+    
 }
+.example1:hover{
+    background:linear-gradient(to bottom , rgba(255, 255, 255, 0) 60%, #708fff) , url('../images/home/PetAdoptExamples/CatExample1.jpg');
+    background-repeat:no-repeat;background-position: 50% 50%;background-size: cover;
+
+}
+
 .example2{
     background: url('../images/home/PetAdoptExamples/examplePET2.jpg');
     background-repeat:no-repeat;background-position: 50% 50%;background-size: cover;
+}
+.example2:hover{
+    background:linear-gradient(to bottom , rgba(255, 255, 255, 0) 60%, #708fff) , url('../images/home/PetAdoptExamples/examplePET2.jpg');
+    background-repeat:no-repeat;background-position: 50% 50%;background-size: cover;
+
 }
 .example4{
     background:url('../images/home/PetAdoptExamples/PETEXAMPLE3.jpg');
     background-repeat:no-repeat;background-position: 50% 50%;background-size: cover;
 }
+.example4:hover{
+    background:linear-gradient(to bottom , rgba(255, 255, 255, 0) 60%, #708fff) , url('../images/home/PetAdoptExamples/PETEXAMPLE3.jpg');
+    background-repeat:no-repeat;background-position: 50% 50%;background-size: cover;
+
+}
 .example3{
     background:url('../images/home/PetAdoptExamples/PETEXAPMLE3.jpg');
     background-repeat:no-repeat;background-position: 50% 50%;background-size: cover;
+}
+.example3:hover{
+    background:linear-gradient(to bottom , rgba(255, 255, 255, 0) 60%, #708fff) , url('../images/home/PetAdoptExamples/PETEXAPMLE3.jpg');
+    background-repeat:no-repeat;background-position: 50% 50%;background-size: cover;
+
 }
 .containerOfPet > div {
     opacity: 0;
@@ -756,9 +780,12 @@ nav{
 .DayCareServInfo{
     width: 75vw;height: auto;
     background-color: var(--main);
-    padding: 5vw;color: white;
+    padding: 3vw 4vw 1vw 7vw;color: white;
     border-radius: 0px 100vw 100vw 0px;
+
 }
-.DayCareServInfo>p{
-    font-size: 2vw;
+.joinNow{
+    background-color: white;padding: 1vw 3vw 1vw 3vw;
+    border: none;border-radius: 50vw;color:var(--main);
+    font-family: 'ExtraBold';
 }
