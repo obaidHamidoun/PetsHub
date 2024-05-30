@@ -84,7 +84,7 @@
         width:90vw !important;
     }
 
-    .menuButton {
+    .menuButton , .searchIcon{
         width: 5vw !important;
         height: 5vw !important;
     }
@@ -141,7 +141,7 @@
        .TypeOfpet{
            font-size: 2.4vw !important;
        }
-       .MorePets{
+       .MorePets , .DiscoverMore{
         padding: 2.5vw 5vw 2.5vw 5vw !important;
         font-size: 2.5vw !important;width: 20vw !important;
         gap: 5vw !important;width: 30vw !important;
@@ -193,7 +193,7 @@
         width:90vw !important;
     }
 
-    .menuButton {
+    .menuButton , .searchIcon{
         width: 5vw !important;
         height: 5vw !important;
     }
@@ -280,7 +280,7 @@ gap:2vw !important;
         height: 20vw !important;
         width:90vw !important;
     }
-    .menuButton {
+    .menuButton , .searchIcon{
         width: 7vw !important;
         height: 7vw !important;
     }
@@ -327,6 +327,7 @@ gap:2vw !important;
     }
     nav{
         width: 96vw !important;padding: 6vw !important;
+        right: auto !important;
     }
     .headerOfNav{
         height: 10vw !important;display: flex;align-items: center;justify-content:end;
@@ -397,7 +398,7 @@ gap:3vw !important;
 
 @keyframes slide{
     0%{
-        margin-right:-50vw;
+        margin-right:-100vw;
         transform:scale3d(0 , 0 , 0);
     }
     100%{
@@ -570,7 +571,7 @@ z-index: 3 ;
 background-color: #ffffffc2 ;
 backdrop-filter: blur(10px) ;
 }
-.menuButton {
+.menuButton , .searchIcon {
     display: inline ;
     width: 3.5vw ;
     height: 3.5vw ;
@@ -580,7 +581,7 @@ backdrop-filter: blur(10px) ;
     cursor: pointer ;
     background-position: 50% 50% ;
 }
-.menuButton:hover{
+.menuButton:hover , .searchIcon:hover{
     animation:shake 0.4s ease;
 }
 .MainLogo {
@@ -629,14 +630,13 @@ backdrop-filter: blur(10px) ;
     overflow-x: hidden; 
 }
 nav{
-    width: 30vw ;background-color: #3863fd;
+    width: 30vw ;background-color: var(--main);
     backdrop-filter: blur(10px);
     height: 98vh;position: fixed;top: 0;right: 0;
     z-index: 4;border-radius: 10px;margin: 10px;
     padding: 2vw;
     transform: scale3d(0,0,0);
     overflow: auto !important;
-    box-shadow: 0px 0px 30px -2px #5352a0d6;
 }
 .headerOfNav{
     height: 4vw;display: flex;align-items: center;
@@ -799,11 +799,11 @@ nav{
 .MorePet{
     display: flex;justify-content: center;
 }
-.MorePets{
+.MorePets , .DiscoverMore{
     border: none;padding:1vw 1.3vw 1vw 1.3vw;background-color: var(--main);color: white;
     font-size: 1.5vw;border-radius: 4vw;width: 15vw;
 }
-.MorePets:hover{
+.MorePets:hover , .DiscoverMore:hover{
     animation: shake 0.4s ;
 }
 .daycareService{
