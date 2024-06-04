@@ -6,11 +6,26 @@
     <title>Users Table</title>
     <link rel="icon" href="images/adminIcon.png">
     <style>
+        @font-face {
+    font-family:'Black';
+    src: url('../fonts/MPLUSRounded1c-Black.ttf');
+}
+
+@font-face {
+    font-family:'Medium';
+    src: url('../fonts/MPLUSRounded1c-Medium.ttf');
+}
+
+@font-face {
+    font-family:'ExtraBold';
+    src: url('../fonts/MPLUSRounded1c-ExtraBold.ttf');
+}
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: white;
+            font-family: 'ExtraBold';
         }
         .table-container {
             max-width: 100%;
@@ -29,10 +44,10 @@
         th, td {
             padding: 10px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #3D67FF;
         }
         th {
-            background-color: #4A90E2;
+            background-color: #3D67FF;
             color: white;
         }
         tr:nth-child(even) {
@@ -53,9 +68,37 @@
         .action-btn:hover {
             background-color: #357ABD;
         }
+        button{
+            cursor:pointer;            font-family: 'ExtraBold';
+        }
+        .edit{
+            background-color: rgb(115, 232, 166);
+            border-color: green ;
+        }
+        .remove{
+            background-color: rgb(225, 116, 116);
+            border-color: #800000 ;
+        }
+        a{
+            text-decoration: none;color: black;
+        }
+        .headd{
+            padding: 0.6vw;
+        }
+        .headd>button{
+            background-color: #3D67FF;
+            color: white;
+            border: none;padding: 0.5vw;border-radius: 0.1vw;
+            font-family: 'ExtraBold' ;
+        }
     </style>
 </head>
 <body>
+
+<div class="headd">
+    <button onclick="window.location.href = 'index.php'">Back</button>
+</div>
+
     <div class="table-container">
         <table class="UsersTable">
             <thead>
@@ -71,27 +114,42 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Example rows, you can populate this dynamically with your data -->
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john.doe@example.com</td>
-                    <td>+123456789</td>
-                    <td><img src="https://via.placeholder.com/50" alt="Profile Picture"></td>
-                    <td><button class="action-btn">Edit</button></td>
-                    <td><button class="action-btn">Remove</button></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jane</td>
-                    <td>Smith</td>
-                    <td>jane.smith@example.com</td>
-                    <td>+987654321</td>
-                    <td><img src="https://via.placeholder.com/50" alt="Profile Picture"></td>
-                    <td><button class="action-btn">Edit</button></td>
-                    <td><button class="action-btn">Remove</button></td>
-                </tr>
+            <?php
+
+$servername = 'localhost';
+$username = 'root';
+$pass = "";
+
+try {
+  $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
+  $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  $sql = "SELECT * FROM users";
+  $stmt = $connection->prepare($sql);
+  $stmt->execute();
+  $results = $stmt->fetchAll();
+
+  foreach($results as $result){
+    echo "<tr>
+     <td>{$result['id']}</td>
+     <td>{$result['first_name']}</td>
+     <td>{$result['last_name']}</td>
+     <td>{$result['email']}</td>
+     <td>{$result['phone']}</td>
+     <td>{$result['profile_picture']}</td>
+     <td><button class='edit'><a  href='EditPage.php?id={$result['id']}'>Edit</a></button></td>
+     <td><button class='remove'><a  href='RemovePage.php?id={$result['id']}'>remove</a></button></td>
+    </tr>";
+  }
+
+  
+
+
+
+} catch(PDOException $e) {
+  echo "Error: " . $e->getMessage();
+}
+?>
 
             </tbody>
         </table>
