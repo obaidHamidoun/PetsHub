@@ -1,10 +1,30 @@
 <?php
-   $servername = "localhost";
-   $username = "root";
-   $password = "";
-   $dbname = "petshub";
+
+$servername = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'petshub';
+
+try {
+
+    $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "SELECT COUNT(*) AS user_count FROM users";
+    $productnum = "SELECT COUNT(*) AS product_count FROM products";
+    $stmt = $connection->prepare($sql);
+    $stm = $connection->prepare($productnum);
+    $stmt->execute();
+    $stm->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $numOfpro = $stm->fetch(PDO::FETCH_ASSOC);
 
 
+
+} catch(PDOException $e) {
+    // Handle database connection errors
+    echo "Connection failed: " . $e->getMessage();
+}
 
 ?>
 <!DOCTYPE html>
@@ -187,11 +207,11 @@
             <div class="dashboard-stats">
                 <div class="stat">
                     <h2>Total Products</h2>
-                    <p>56</p>
+                    <?php     echo "<h1>{$numOfpro['product_count']}</h1>" ?>
                 </div>
                 <div class="stat">
                     <h2>Total Users</h2>
-                    <p>173</p>
+                    <?php     echo "<h1>{$result['user_count']}</h1>" ?>
                 </div>
                 <div class="stat">
                     <h2>Total Pets</h2>
