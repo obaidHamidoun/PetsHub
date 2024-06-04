@@ -114,8 +114,9 @@
                 </tr>
             </thead>
             <tbody>
-            <?php
 
+
+<?php
 $servername = 'localhost';
 $username = 'root';
 $pass = "";
@@ -141,10 +142,6 @@ try {
      <td><button class='remove'><a  href='RemovePage.php?id={$result['id']}'>remove</a></button></td>
     </tr>";
   }
-
-  
-
-
 
 } catch(PDOException $e) {
   echo "Error: " . $e->getMessage();
