@@ -1,3 +1,12 @@
+<?php
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $dbname = "petshub";
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,7 +160,7 @@
         </div>
         <ul class="menu">
             <li><a href="#" class="active" onclick="showSection(event, 'home')">Home</a></li>
-            <li><a href="#" onclick="window.location.href = 'users.html'">Users</a></li>
+            <li><a href="#" onclick="window.location.href = 'users.php'">Users</a></li>
             <li><a href="#" onclick="window.location.href = 'products.html'">Products</a></li>
             <li><a href="#" onclick="showSection(event, 'pets')">Pets</a></li>
             <li><a href="#" onclick="showSection(event, 'settings')">Settings</a></li>
@@ -165,7 +174,7 @@
         <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         <ul class="menu" id="topbarMenu">
             <li><a href="#" class="active" onclick="showSection(event, 'home')">Home</a></li>
-            <li><a href="#" onclick="window.location.href = 'users.html'">Users</li>
+            <li><a href="#" onclick="window.location.href = 'users.php'">Users</li>
             <li><a href="#" onclick="window.location.href = 'products.html'">Products</a></li>
             <li><a href="#" onclick="showSection(event, 'pets')">Pets</a></li>
             <li><a href="#" onclick="showSection(event, 'settings')">Settings</a></li>
@@ -207,7 +216,7 @@
             <p>Adjust your settings here.</p>
                   
             <div class="AddContainer">
-                <button class="Add" onclick="window.location.href='addproduct.html'">add product</button>          
+                <button class="Add" onclick="window.location.href='addproduct.php'">add product</button>          
                 <button class="Add">add pet</button>               
                 <button class="Add">Sells</button>
             </div>    
