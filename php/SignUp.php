@@ -1,44 +1,50 @@
 <?php
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Database connection details
+  $servername = 'localhost';
+  $username = 'root';
+  $pass = "";
 
-//      $servername = 'localhost';
-//      $username = 'root';
-//      $password = "";
-//      try{
-//       $connection = new PDO("mysql:host=$servername;dbname=users",$username,$password);
-//       $connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-      
-//       echo "<h3>connected sucessfully</h3>";
+  try {
+    $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // Retrieve user input
+    $firstName = $_POST['fname'];
+    $lastName = $_POST['lname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
 
-//       $firstName = $_POST['fname'];
-//       $lastName = $_POST['lname'];
-//       $email = $_POST['email'];
-//       $phone = $_POST['phone'];
-//       $password = $_POST['password'];
-  
-//       $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-      
-//       $sql = "INSERT INTO users (first_name, last_name, email, phone, password) 
-//               VALUES ('$firstName', '$lastName', '$email', '$phone', '$hashedPassword')";
-      
-//       if (mysqli_query($connection, $sql)) {
-//           echo "User registered successfully";
-//       } else {
-//           // Error inserting user data
-//           echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-//       }
-      
-//       // Close database connection
-//       mysqli_close($conn);
-      
+    // Password hashing
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-//     }catch(PDOException $e){
-//      echo "<h3>connection failed</h3> <br>" . $e->getMessage();
-//     }
+    // Prepare SQL statement
+    $sql = "INSERT INTO users (first_name, last_name, email, phone, password) 
+             VALUES (:firstName, :lastName, :email, :phone, :hashedPassword)";
 
+    $stmt = $connection->prepare($sql);
 
+    // Bind parameters for security (prevents SQL injection)
+    $stmt->bindParam(':firstName', $firstName);
+    $stmt->bindParam(':lastName', $lastName);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':hashedPassword', $hashedPassword);
 
-// }
+    // Execute the statement
+    $stmt->execute();
 
+    // Start a session and store the user's ID (assuming you fetch the ID after inserting)
+    session_start();
+    $_SESSION['user_id'] = $connection->lastInsertId(); // Store user ID in session
+    $_SESSION['signup_success'] = true;
+
+    // Redirect to home page
+    header("Location: ../html/home.html");
+    exit;
+
+  } catch(PDOException $e) {
+    // Handle database errors gracefully
+    echo "Error: " . $e->getMessage(); // You can improve the error message for the user
+  }
 ?>
