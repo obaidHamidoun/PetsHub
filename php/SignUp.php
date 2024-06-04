@@ -1,50 +1,60 @@
 <?php
-  // Database connection details
-  $servername = 'localhost';
-  $username = 'root';
-  $pass = "";
+  // Check if form is submitted
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Print out $_POST array for debugging
+    print_r($_POST);
 
-  try {
-    $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Database connection details
+    $servername = 'localhost';
+    $username = 'root';
+    $pass = "";
 
-    // Retrieve user input
-    $firstName = $_POST['fname'];
-    $lastName = $_POST['lname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $password = $_POST['password'];
+    try {
+      $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
+      $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Password hashing
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+      // Retrieve user input
+      $firstName = $_POST['fname'];
+      $lastName = $_POST['lname'];
+      $email = $_POST['email'];
+      $phone = $_POST['phone'];
+      $password = $_POST['password'];
 
-    // Prepare SQL statement
-    $sql = "INSERT INTO users (first_name, last_name, email, phone, password) 
-             VALUES (:firstName, :lastName, :email, :phone, :hashedPassword)";
+      // Password hashing
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $connection->prepare($sql);
+      // Prepare SQL statement
+      $sql = "INSERT INTO users (first_name, last_name, email, phone, password) 
+               VALUES (:firstName, :lastName, :email, :phone, :hashedPassword)";
 
-    // Bind parameters for security (prevents SQL injection)
-    $stmt->bindParam(':firstName', $firstName);
-    $stmt->bindParam(':lastName', $lastName);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':phone', $phone);
-    $stmt->bindParam(':hashedPassword', $hashedPassword);
+      $stmt = $connection->prepare($sql);
 
-    // Execute the statement
-    $stmt->execute();
+      // Bind parameters for security (prevents SQL injection)
+      $stmt->bindParam(':firstName', $firstName);
+      $stmt->bindParam(':lastName', $lastName);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':phone', $phone);
+      $stmt->bindParam(':hashedPassword', $hashedPassword);
 
-    // Start a session and store the user's ID (assuming you fetch the ID after inserting)
-    session_start();
-    $_SESSION['user_id'] = $connection->lastInsertId(); // Store user ID in session
-    $_SESSION['signup_success'] = true;
+      // Execute the statement
+      $stmt->execute();
 
-    // Redirect to home page
-    header("Location: ../html/home.html");
+      // Start a session and store the user's ID (assuming you fetch the ID after inserting)
+      session_start();
+      $_SESSION['user_id'] = $connection->lastInsertId(); // Store user ID in session
+      $_SESSION['signup_success'] = true;
+
+      // Redirect to home page
+      header("Location: ../html/home.html");
+      exit;
+
+    } catch(PDOException $e) {
+      // Handle database errors gracefully
+      echo "Error: " . $e->getMessage(); // You can improve the error message for the user
+    }
+  } else {
+    // Redirect back to the sign-up page if the form is not submitted
+    header("Location: ../html/signUp.html");
     exit;
-
-  } catch(PDOException $e) {
-    // Handle database errors gracefully
-    echo "Error: " . $e->getMessage(); // You can improve the error message for the user
   }
 ?>
