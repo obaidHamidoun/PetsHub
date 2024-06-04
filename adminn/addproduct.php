@@ -1,3 +1,36 @@
+<?php
+
+  $servername = 'localhost';
+  $username = 'root';
+  $pass = "";
+if($_SERVER["REQUEST_METHOD"] == 'POST'){
+  try {
+    $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+    $productName = $_POST['productName'];
+    $price = $_POST['price'];
+    $description = $_POST['description'];
+    $category = $_POST['category'];
+    $productpicture = $_POST['productImage'];
+
+    
+    
+    $sql = "INSERT INTO products (product_name , product_price , product_description , product_category , product_picture) 
+            VALUES($productName , $price , $description , $category , $productpicture)";
+      $stmt = $connection->prepare($sql);
+      $stmt->execute();
+      header("Location: users.php");
+
+    }catch(PDOException $e){
+      echo "<script>console.log({$e->getMEssage()})</script>";
+    }
+
+  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,21 +39,20 @@
     <title>Add Product</title>
     <link rel="icon" href="images/adminIcon.png">
     <style>
+        @font-face {
+            font-family: 'Black';
+            src: url('../fonts/MPLUSRounded1c-Black.ttf');
+        }
 
-@font-face {
-    font-family:'Black';
-    src: url('../fonts/MPLUSRounded1c-Black.ttf');
-}
+        @font-face {
+            font-family: 'Medium';
+            src: url('../fonts/MPLUSRounded1c-Medium.ttf');
+        }
 
-@font-face {
-    font-family:'Medium';
-    src: url('../fonts/MPLUSRounded1c-Medium.ttf');
-}
-
-@font-face {
-    font-family:'ExtraBold';
-    src: url('../fonts/MPLUSRounded1c-ExtraBold.ttf');
-}
+        @font-face {
+            font-family: 'ExtraBold';
+            src: url('../fonts/MPLUSRounded1c-ExtraBold.ttf');
+        }
 
         body {
             font-family: Arial, sans-serif;
@@ -70,7 +102,7 @@
         .submit-btn {
             width: 100%;
             padding: 10px;
-            background-color: #4A90E2;
+            background-color: #3D67FF;
             border: none;
             border-radius: 4px;
             color: white;
@@ -78,18 +110,19 @@
             cursor: pointer;
         }
         .submit-btn:hover {
-            background-color: #357ABD;
+            background-color: #3958c8;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h2>Insert Product</h2>
-        <form id="productForm">
+        <form id="productForm" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="productName">Product Name</label>
                 <input type="text" id="productName" name="productName" required>
             </div>
+
             <div class="form-group">
                 <label for="price">Price</label>
                 <input type="number" id="price" name="price" step="0.01" required>
@@ -117,7 +150,7 @@
         </form>
     </div>
     <script>
-        // Function to show image preview
+       
         document.getElementById('productImage').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -134,33 +167,6 @@
                 };
                 reader.readAsDataURL(file);
             }
-        });
-
-        // Form submission with validation
-        document.getElementById('productForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const productName = document.getElementById('productName').value.trim();
-            const price = document.getElementById('price').value.trim();
-            const description = document.getElementById('description').value.trim();
-            const category = document.getElementById('category').value.trim();
-            const productImage = document.getElementById('productImage').files[0];
-
-            // Basic validation checks
-            if (!productName || !price || !description || !category || !productImage) {
-                alert('Please fill out all fields and upload a valid image.');
-                return;
-            }
-
-            // Check if price is a valid number
-            if (isNaN(price) || price <= 0) {
-                alert('Please enter a valid price.');
-                return;
-            }
-
-            // Proceed with form submission
-            alert('Product submitted successfully!');
-            // You can add your form submission code here
         });
     </script>
 </body>
