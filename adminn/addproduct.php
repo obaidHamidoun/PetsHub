@@ -1,35 +1,39 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+    if(isset($_POSt['submit'])){
+    try {
+        $connection = new PDO("mysql:host=localhost;dbname=petshub", 'root', '');
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+        echo "<script>console.log('connected')</script>";
 
-  $servername = 'localhost';
-  $username = 'root';
-  $pass = "";
-if($_SERVER["REQUEST_METHOD"] == 'POST'){
-  try {
-    $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $product_name = $_POST['productName'];
+        $product_price = $_POST['productPrice'];
+        $product_description = $_POST['productDescription'];
+        $product_category = $_POST['productCategory'];
 
+        // Access uploaded file via $_FILES
+        $fileTmpPath = $_FILES['product_Image']['tmp_name'];
+        $product_image = file_get_contents($fileTmpPath);
 
-    $productName = $_POST['productName'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
-    $category = $_POST['category'];
-    $productpicture = $_POST['productImage'];
+        $addProductQuerry =  "INSERT INTO `products`( `product_name`, `product_price`, `product_description`, `product_category`, `product_picture`) 
+        VALUES (:product_name, :product_price, :product_description, :product_category, :product_image)";
+        $stmt = $connection->prepare($addProductQuerry);
+        // Bind parameters
+        $stmt->bindParam(':product_name', $product_name);
+        $stmt->bindParam(':product_price', $product_price);
+        $stmt->bindParam(':product_description', $product_description);
+        $stmt->bindParam(':product_category', $product_category);
+        $stmt->bindParam(':product_image', $product_image, PDO::PARAM_LOB);
+        $stmt->execute();
 
-    
-    
-    $sql = "INSERT INTO products (product_name , product_price , product_description , product_category , product_picture) 
-            VALUES($productName , $price , $description , $category , $productpicture)";
-      $stmt = $connection->prepare($sql);
-      $stmt->execute();
-      header("Location: users.php");
-
-    }catch(PDOException $e){
-      echo "<script>console.log({$e->getMEssage()})</script>";
+    } catch(PDOException $err ){
+        echo "<script>alert({$err->getMessage()})</script>";
     }
-
-  
+}
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     <title>Add Product</title>
     <link rel="icon" href="images/adminIcon.png">
     <style>
-        @font-face {
+          @font-face {
             font-family: 'Black';
             src: url('../fonts/MPLUSRounded1c-Black.ttf');
         }
@@ -122,18 +126,17 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
                 <label for="productName">Product Name</label>
                 <input type="text" id="productName" name="productName" required>
             </div>
-
             <div class="form-group">
                 <label for="price">Price</label>
-                <input type="number" id="price" name="price" step="0.01" required>
+                <input type="number" id="price" name="productPrice" step="0.01" required>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea id="description" name="description" rows="4" required></textarea>
+                <textarea id="description" name="productDescription" rows="4" required></textarea>
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <select id="category" name="category" required>
+                <select id="category" name="productCategory" required>
                     <option value="">Select a category</option>
                     <option value="toys">Toys and Accessories</option>
                     <option value="grooming">Grooming Supplies</option>
@@ -143,14 +146,13 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
             </div>
             <div class="form-group">
                 <label for="productImage">Product Image</label>
-                <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                <input type="file" id="productImage" name="product_Image" accept="image/*" required>
                 <img id="imagePreview" src="" alt="Image Preview" style="display: none;">
             </div>
             <button type="submit" class="submit-btn">Submit</button>
         </form>
     </div>
     <script>
-       
         document.getElementById('productImage').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
