@@ -89,50 +89,18 @@
 
 
 <main>
+    <!--products-->
     <section class="newProducts">
         <h2 class="newProTitle title">New Products</h2>
-        <div class="products new">
-            <div class="product">
-                <div class="product-Pic"></div>
-                <div class="proNameDiv"><p>Product 1</p></div>
-                <div class="ProPrice"><p>50 MAD</p></div>
-                <div class="ProCat"><p>Toys & accessories</p></div>
-                <div class="buyCart">
-                    <button class="addToCart">Add To Cart</button>
-                    <button class="BuyNow">Buy now</button>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-Pic"></div>
-                <div class="proNameDiv"><p>Product 2</p></div>
-                <div class="ProPrice"><p>505 MAD</p></div>
-                <div class="ProCat"><p>Toys & accessories</p></div>
-                <div class="buyCart">
-                    <button class="addToCart">Add To Cart</button>
-                    <button class="BuyNow">Buy now</button>
-                </div>
-            </div>
+        <!--new products-->
+        <div class="products new onlyNewProducts">
+           
         </div>
-
-
-
     </section>
 
     <section class="ToysAndAcc">
         <h2 class="toysAcc title">Toys and Accessories</h2>
         <div class="products toys-acces">
-
-            <div class="products new">
-                <div class="product">
-                    <div class="product-Pic"></div>
-                    <div class="proNameDiv"><p>Product 1</p></div>
-                    <div class="ProPrice"><p>23 MAD</p></div>
-                    <div class="ProCat"><p> Food </p></div>
-                    <div class="buyCart">
-                        <button class="addToCart">Add To Cart</button>
-                        <button class="BuyNow">Buy now</button>
-                    </div>
-                </div>
 
         </div>
     </section>
@@ -141,42 +109,7 @@
     <section class="Grooming">
       <h2 class="toysAcc title">Grooming & Supplies</h2>
       <div class="products toys-acces">
-
-          <div class="products new">
-
-              <div class="product">
-                  <div class="product-Pic"></div>
-                  <div class="proNameDiv"><p>Product 1</p></div>
-                  <div class="ProPrice"><p>230 MAD</p></div>
-                  <div class="ProCat"><p> Grooming & Supplies </p></div>
-                  <div class="buyCart">
-                      <button class="addToCart">Add To Cart</button>
-                      <button class="BuyNow">Buy now</button>
-                  </div>
-              </div>
-
-              <div class="product">
-                <div class="product-Pic"></div>
-                <div class="proNameDiv"><p>Product 1</p></div>
-                <div class="ProPrice"><p>314 MAD</p></div>
-                <div class="ProCat"><p> Grooming & Supplies </p></div>
-                <div class="buyCart">
-                    <button class="addToCart">Add To Cart</button>
-                    <button class="BuyNow">Buy now</button>
-                </div>
-            </div>
-
-            <div class="product">
-              <div class="product-Pic"></div>
-              <div class="proNameDiv"><p>Product 1</p></div>
-              <div class="ProPrice"><p>510 MAD</p></div>
-              <div class="ProCat"><p> Grooming & Supplies </p></div>
-              <div class="buyCart">
-                  <button class="addToCart">Add To Cart</button>
-                  <button class="BuyNow">Buy now</button>
-              </div>
-          </div>
-
+          <div class="products new groomingSUp">
       </div>
   </section><br>
 
@@ -187,40 +120,17 @@
     <h2 class="toysAcc title">Bedding and Comfort</h2>
     <div class="products toys-acces">
 
-        <div class="products new">
+        <div class="products new bedcomfrt"></div>
 
-            <div class="product">
-                <div class="product-Pic"></div>
-                <div class="proNameDiv"><p>Product 1</p></div>
-                <div class="ProPrice"><p>230 MAD</p></div>
-                <div class="ProCat"><p> Grooming & Supplies </p></div>
-                <div class="buyCart">
-                    <button class="addToCart">Add To Cart</button>
-                    <button class="BuyNow">Buy now</button>
-                </div>
-            </div>
+    </div>
+</section>
 
-            <div class="product">
-              <div class="product-Pic"></div>
-              <div class="proNameDiv"><p>Product 1</p></div>
-              <div class="ProPrice"><p>314 MAD</p></div>
-              <div class="ProCat"><p> Grooming & Supplies </p></div>
-              <div class="buyCart">
-                  <button class="addToCart">Add To Cart</button>
-                  <button class="BuyNow">Buy now</button>
-              </div>
-          </div>
 
-          <div class="product">
-            <div class="product-Pic"></div>
-            <div class="proNameDiv"><p>Product 1</p></div>
-            <div class="ProPrice"><p>510 MAD</p></div>
-            <div class="ProCat"><p> Grooming & Supplies </p></div>
-            <div class="buyCart">
-                <button class="addToCart">Add To Cart</button>
-                <button class="BuyNow">Buy now</button>
-            </div>
-        </div>
+<section class="BeddingandComfort">
+    <h2 class="toysAcc title">Food And Feeding</h2>
+    <div class="products toys-acces">
+
+        <div class="products new FoodFeeding"></div>
 
     </div>
 </section>
@@ -266,7 +176,71 @@ function scrollToSection(sectionId) {
     mainContent.style.display = 'block';
   });
 
+
+  let xml = new XMLHttpRequest();
+    xml.open("GET", "../php/newProducts.php", true);
+    xml.setRequestHeader("Content-Type", "application/json");
+    xml.send();
+    xml.onload = function(){
+    document.querySelector('.onlyNewProducts').innerHTML += xml.responseText;
+}
   
+let ntoysAccesoriesXML = new XMLHttpRequest();
+    ntoysAccesoriesXML.open("GET", "../php/categoryToysAcce.php", true);
+    ntoysAccesoriesXML.setRequestHeader("Content-Type", "application/json");
+    ntoysAccesoriesXML.send();
+    ntoysAccesoriesXML.onload = function(){
+    document.querySelector('.toys-acces').innerHTML += ntoysAccesoriesXML.responseText;
+}
+  
+
+let groomXML = new XMLHttpRequest();
+    groomXML.open("GET", "../php/categoryGrooming.php", true);
+    groomXML.setRequestHeader("Content-Type", "application/json");
+    groomXML.send();
+    groomXML.onload = function(){
+    document.querySelector('.groomingSUp').innerHTML += groomXML.responseText;
+}
+
+let BedAndComfortXML = new XMLHttpRequest();
+    BedAndComfortXML.open("GET", "../php/categoryBedComft.php", true);
+    BedAndComfortXML.setRequestHeader("Content-Type", "application/json");
+    BedAndComfortXML.send();
+    BedAndComfortXML.onload = function(){
+    document.querySelector('.bedcomfrt').innerHTML += BedAndComfortXML.responseText;
+}
+
+let FoodFeeding = new XMLHttpRequest();
+    FoodFeeding.open("GET", "../php/categoryFoodFeeding.php", true);
+    FoodFeeding.setRequestHeader("Content-Type", "application/json");
+    FoodFeeding.send();
+    FoodFeeding.onload = function(){
+    document.querySelector('.FoodFeeding').innerHTML += FoodFeeding.responseText;
+}
+
+
+
+fetch('../php/checkSession.php')
+    .then(response => response.json())
+    .then(data => {
+        if (data.loggedIn) {
+            // User is logged in
+            const userId = data.userId;
+            const userData = data.userData;
+
+            console.log('User ID:', userId);
+            console.log('User data:', userData);
+            document.querySelector('.UserName').innerHTML =  userData.first_name + ' ' + userData.last_name;
+
+        } else {
+            console.log('User is not logged in');
+
+        }
+    })
+    .catch(error => {
+        console.error('Error checking session:', error);
+    });
+
     </script>
 </body>
 </html>

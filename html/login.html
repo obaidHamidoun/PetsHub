@@ -55,6 +55,47 @@
             }, 300);
         }
         setTimeout(updateContent, 2000);
+
+        const form = document.querySelector('form');
+const emailInput = document.querySelector('#email');
+const passwordInput = document.querySelector('#password');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    let email = emailInput.value;
+    let password = passwordInput.value;
+
+    let xml = new XMLHttpRequest();
+    xml.open("POST", "../php/login.php", true);
+    xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xml.onload = function() {
+        if (xml.readyState === XMLHttpRequest.DONE) {
+            if (xml.status === 200) {
+                let response = JSON.parse(xml.responseText);
+                console.log(response);
+                if (response.msg === "true") {
+                    setTimeout(function() {
+                        document.querySelector('.signUpButton').innerHTML = 'Welcome Back!';
+                        document.querySelector('.signUpButton').style.backgroundColor = '#49f1a3';
+                        document.querySelector('.signUpButton').style.color = '#32a46f';
+                    }, 10);
+                    window.location.href = '../html/home.html';
+                } else if (response.msg === "false") {
+                    alert('Login failed: Incorrect email or password.');
+                } else {
+                    alert('An error occurred while processing your request.');
+                }
+            }
+        }
+    };
+
+    let data = "email=" + encodeURIComponent(email) +
+        "&password=" + encodeURIComponent(password);
+    xml.send(data);
+});
+
+
     </script>
 
 </script>
