@@ -9,16 +9,16 @@ if (isset($_SESSION['user_id'])) {
     // Database connection details
     $servername = 'localhost';
     $username = 'root';
-    $pass = '';
+    $password = '';
     $dbname = 'petshub';
 
     try {
         // Create connection
-        $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $pass);
+        $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Prepare and execute query to fetch user information
-        $getUser = "SELECT * FROM users WHERE id = :user_id";
+        // Prepare and execute query to fetch user information including profile picture blob data
+        $getUser = "SELECT *, profile_picture FROM users WHERE id = :user_id";
         $stmt = $connection->prepare($getUser);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->execute();
@@ -39,7 +39,6 @@ if (isset($_SESSION['user_id'])) {
 } else {
     // User is not logged in
     $response = array('loggedIn' => false);
-    echo "<script>window.location.href = 'php/SignUp.php'</script>";
 }
 
 // Send JSON response

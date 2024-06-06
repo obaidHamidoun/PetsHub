@@ -72,7 +72,16 @@
         <input type="text" class="searchProductInput" name="searchProductInput" placeholder="Search for a product">
         <button type="submit" for="searchProductInput" class="searchButton"></button>
     </div>
+
+    <section class="newProducts" style="margin-top: 5vw;">
+        <h2 class="newProTitle title">Results :</h2>
+    
+        <div class="products new searched"></div>
+    </section>
+
 </div>
+
+
 
 
     <header>
@@ -85,7 +94,6 @@
 
     </div>
     </header>
-
 
 
 <main>
@@ -241,6 +249,37 @@ fetch('../php/checkSession.php')
         console.error('Error checking session:', error);
     });
 
-    </script>
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.querySelector('.searchProductInput');
+    const searchResultsDiv = document.querySelector('.searched');
+
+    searchInput.addEventListener('input', function () {
+        const searchTerm = searchInput.value.trim();
+
+        if (searchTerm !== '') {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `../php/search.php?searchTerm=${encodeURIComponent(searchTerm)}`, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    searchResultsDiv.innerHTML = xhr.responseText;
+                } else {
+                    console.error('Error fetching search results:', xhr.statusText);
+                }
+            };
+            xhr.onerror = function () {
+                console.error('Error fetching search results:', xhr.statusText);
+            };
+            xhr.send();
+        } else {
+            searchResultsDiv.innerHTML = '';
+        }
+    });
+});
+
+</script>
+
 </body>
 </html>

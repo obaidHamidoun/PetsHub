@@ -35,8 +35,8 @@
       $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
       // Prepare SQL statement
-      $sql = "INSERT INTO users (first_name, last_name, email, phone, password) 
-               VALUES (:firstName, :lastName, :email, :phone, :hashedPassword)";
+      $sql = "INSERT INTO users (first_name, last_name, email, phone, password , user_type) 
+               VALUES (:firstName, :lastName, :email, :phone, :hashedPassword , 'client')";
 
       $stmt = $connection->prepare($sql);
 

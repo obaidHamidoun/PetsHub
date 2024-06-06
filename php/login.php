@@ -23,26 +23,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $check->fetch(PDO::FETCH_ASSOC);
 
         if (empty($user)) {
-            echo json_encode(["msg" => "false"]); // User not found
+            echo json_encode(["msg" => "user does not exist"]);
             exit;
         }
       
-  
-
-        // Verify the password
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
-            echo json_encode(["msg" => "true"]);
+            $_SESSION['user_type'] = $user['user_type']; // Assuming 'user_type' is the column for user type in your database
+
+            // Redirect based on user type
+            if ($user['user_type'] === 'client') {
+                echo json_encode(["msg" => "client", "redirect" => "../html/home.html"]);
+            } elseif ($user['user_type'] === 'admin') {
+                echo json_encode(["msg" => "admin", "redirect" => "../admin/index.php"]);
+            }
         } else {
-            echo json_encode(["msg" => "false" ]); // Incorrect password
+            echo json_encode(["msg" => "false" ]);
         }
     } catch(PDOException $e) {
-        // Handle database errors gracefully
         echo json_encode(["msg" => "error", "error" => $e->getMessage()]);
     }
 } else {
-    // Redirect to sign-up page if the request method is not POST
     header("Location: ../html/signUp.html");
     exit;
 }

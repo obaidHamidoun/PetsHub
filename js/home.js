@@ -27,22 +27,56 @@ window.addEventListener('resize', updateInfoContent);
 
 
 fetch('../php/checkSession.php')
-    .then(response => response.json())
-    .then(data => {
-        if (data.loggedIn) {
-            // User is logged in
-            const userId = data.userId;
-            const userData = data.userData;
+.then(response =>{
+    if(!response.ok){
+        throw new Error('Network response was not ok');
+    } return response.json()
+})
+.then(data => {
+ if(data.loggedIn === 'true'){
+    console.log('logged in');
+    const userId = data.userId;
+    const userData = data.userData;
+    console.log(userData)
 
-            console.log('User ID:', userId);
-            console.log('User data:', userData);
-            document.querySelector('.UserName').innerHTML =  userData.first_name + ' ' + userData.last_name;
+    const blob = new Blob([userData.profile_picture], { type: 'image/jpeg' });
+    const imgUrl = URL.createObjectURL(blob);
+    document.querySelector('.UserPfp').style.backgroundImage = `url(${imgUrl})`;
+ }else{
+    console.log('User is not logged in');
+ }
+})
+.catch(error => {
+    console.error(error);
+});
 
-        } else {
-            console.log('User is not logged in');
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    // })
+    // .then(data => {
+    //     if (data.loggedIn) {
+    //         // User is logged in
+    //         const userId = data.userId;
+    //         const userData = data.userData;
 
-        }
-    })
-    .catch(error => {
-        console.error('Error checking session:', error);
-    });
+    //         console.log('User ID:', userId);
+    //         console.log('User data:', userData);
+
+    //         // Convert blob data to a Blob object
+    //         const blob = new Blob([userData.profile_picture], { type: 'image/jpeg' });
+
+    //         // Create a URL for the Blob object
+    //         const imgUrl = URL.createObjectURL(blob);
+
+    //         // Set the background image of the profile picture div
+    //         document.querySelector('.UserPfp').style.backgroundImage = `url(${imgUrl})`;
+    //     } else {
+    //         console.log('User is not logged in');
+    //     }
+    // })
+    // .catch(error => {
+    //     console.error('Error checking session:', error);
+    // });
