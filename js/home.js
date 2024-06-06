@@ -24,3 +24,25 @@ function updateInfoContent() {
 
 updateInfoContent();
 window.addEventListener('resize', updateInfoContent);
+
+
+fetch('../php/checkSession.php')
+    .then(response => response.json())
+    .then(data => {
+        if (data.loggedIn) {
+            // User is logged in
+            const userId = data.userId;
+            const userData = data.userData;
+
+            console.log('User ID:', userId);
+            console.log('User data:', userData);
+            document.querySelector('.UserName').innerHTML =  userData.first_name + ' ' + userData.last_name;
+
+        } else {
+            console.log('User is not logged in');
+
+        }
+    })
+    .catch(error => {
+        console.error('Error checking session:', error);
+    });

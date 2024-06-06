@@ -1,12 +1,10 @@
-const form = document.querySelector('.signupForm');
+const form = document.getElementById('signUpform');
 const fnameInput = document.getElementById('fname');
 const lnameInput = document.getElementById('lname');
 const emailInput = document.getElementById('email');
 const phoneInput = document.getElementById('phone');
 const passwordInput = document.getElementById('password');
 const rpassInput = document.getElementById('rpass');
-const passwordToggle = document.getElementById('passwordToggle');
-const rpassToggle = document.getElementById('rpassToggle');
 
 let passwordTimer;
 let rpassTimer;
@@ -24,7 +22,6 @@ rpassInput.addEventListener('input', () => {
     validateRepeatPassword();
     startTimer(rpassInput, 'rpass');
 });
-
 
 function throwerror(inputname, errname, text) {
     inputname.style.backgroundColor = '#f253537a';
@@ -45,8 +42,7 @@ function validateFirstName() {
         throwerror(fnameInput, 'ferror', 'First Name is too short.');
     } else if (fnameInput.value.trim().length >= 15) {
         throwerror(fnameInput, 'ferror', 'First Name is too long.');
-    }
-    else if (/[^a-zA-Z]/.test(fnameInput.value.trim())) {
+    } else if (/[^a-zA-Z]/.test(fnameInput.value.trim())) {
         throwerror(fnameInput, 'ferror', 'First Name must contain letters only.');
     } else {
         valide(fnameInput, 'ferror');
@@ -75,8 +71,7 @@ function validateEmail() {
         throwerror(emailInput, 'Eerror', 'Email cannot be empty.');
     } if (emailInput.value.trim().length < 5) {
         throwerror(emailInput, 'Eerror', 'Email is too short.');
-    }
-    else if (!emailRegex.test(emailValue.toLowerCase())) {
+    } else if (!emailRegex.test(emailValue.toLowerCase())) {
         throwerror(emailInput, 'Eerror', 'Invalid email address.');
     } else {
         valide(emailInput, 'Eerror');
@@ -87,17 +82,13 @@ function validatePhone() {
     const phoneRegex = /^\+?[\d]{10,}$/;
     if (phoneInput.value.trim().length === 0) {
         throwerror(phoneInput, 'pherror', 'Phone number cannot be empty.');
-    }
-    if (phoneInput.value.trim().length < 10) {
+    } if (phoneInput.value.trim().length < 10) {
         throwerror(phoneInput, 'pherror', 'Phone number is too short.');
-    }
-    else if (!phoneRegex.test(phoneInput.value.trim())) {
+    } else if (!phoneRegex.test(phoneInput.value.trim())) {
         throwerror(phoneInput, 'pherror', 'Invalid phone number. Must contain only digits');
-    }
-    else if (phoneInput.value.trim().length > 15) {
+    } else if (phoneInput.value.trim().length > 15) {
         throwerror(phoneInput, 'pherror', 'Phone number is too long.');
-    }
-    else {
+    } else {
         valide(phoneInput, 'pherror');
     }
 }
@@ -141,16 +132,6 @@ function startTimer(passwordField, fieldType) {
     }
 }
 
-function togglePasswordVisibility(passwordField, toggleButton) {
-    if (passwordField.type === 'password') {
-        passwordField.type = 'text';
-        toggleButton.textContent = 'Hide';
-    } else {
-        passwordField.type = 'password';
-        toggleButton.textContent = 'Show';
-    }
-}
-
 function validateForm() {
     validateFirstName();
     validateLastName();
@@ -171,12 +152,44 @@ function validateForm() {
 }
 
 form.addEventListener('submit', function (event) {
-    if (!validateForm()) {
-        event.preventDefault();
-    }else{
-        window.location.href = '../html/home.html';
+    event.preventDefault();
+
+    if (validateForm()) {
+        let fname = fnameInput.value;
+        let lname = lnameInput.value;
+        let email = emailInput.value;
+        let phone = phoneInput.value;
+        let password = passwordInput.value;
+
+        let xml = new XMLHttpRequest();
+        xml.open("POST", "../php/signUp.php", true);
+        xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xml.onload = function () {
+            if (xml.readyState === XMLHttpRequest.DONE) {
+                if (xml.status === 200) {
+                    if (xml.responseText.trim() === "true") {
+                        setTimeout(function(){
+                            document.querySelector('.signUpButton').innerHTML = 'Account Created Successfully';
+                            document.querySelector('.signUpButton').style.backgroundColor = '#49f1a3';
+                            document.querySelector('.signUpButton').style.color = '#32a46f';
+                        }, 10);
+                        window.location.href = '../html/home.html';
+                        console.log(xml.responseText)
+
+                    } else {
+                        alert('user already exists');
+                        console.log(xml.responseText)
+                    }
+                }
+            }
+        };
+
+        let data = "fname=" + encodeURIComponent(fname) + 
+                   "&lname=" + encodeURIComponent(lname) + 
+                   "&email=" + encodeURIComponent(email) + 
+                   "&phone=" + encodeURIComponent(phone) + 
+                   "&password=" + encodeURIComponent(password);
+        xml.send(data);(t)
     }
 });
-
-
 
