@@ -884,3 +884,7 @@ animation:shake 0.4s;
 hr{
     color:var(--main);
 }
+.product-Pic{
+    background-size: cover;
+    background-repeat: no-repeat;
+}

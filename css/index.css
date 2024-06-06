@@ -542,3 +542,7 @@ small{
       transform: rotate(360deg);
     }
   }
+.product-Pic{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
