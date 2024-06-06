@@ -1,31 +1,44 @@
 <?php
-
 $servername = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'petshub';
 
 try {
-
     $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "SELECT COUNT(*) AS user_count FROM users";
     $productnum = "SELECT COUNT(*) AS product_count FROM products";
+    $toysCount = "SELECT COUNT(*) AS toys_count FROM products WHERE product_category = 'Toys and Accessories'";
+    $groomingCount = "SELECT COUNT(*) AS grooming_count FROM products WHERE product_category = 'Grooming Supplies'";
+    $beddingCount = "SELECT COUNT(*) AS bedding_count FROM products WHERE product_category = 'Bedding and Comfort'";
+    $foodCount = "SELECT COUNT(*) AS food_count FROM products WHERE product_category = 'Food and Feeding'";
+
     $stmt = $connection->prepare($sql);
     $stm = $connection->prepare($productnum);
+    $toysStmt = $connection->prepare($toysCount);
+    $groomingStmt = $connection->prepare($groomingCount);
+    $beddingStmt = $connection->prepare($beddingCount);
+    $foodStmt = $connection->prepare($foodCount);
+
     $stmt->execute();
     $stm->execute();
+    $toysStmt->execute();
+    $groomingStmt->execute();
+    $beddingStmt->execute();
+    $foodStmt->execute();
+
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $numOfpro = $stm->fetch(PDO::FETCH_ASSOC);
-
-
+    $toysResult = $toysStmt->fetch(PDO::FETCH_ASSOC);
+    $groomingResult = $groomingStmt->fetch(PDO::FETCH_ASSOC);
+    $beddingResult = $beddingStmt->fetch(PDO::FETCH_ASSOC);
+    $foodResult = $foodStmt->fetch(PDO::FETCH_ASSOC);
 
 } catch(PDOException $e) {
-    // Handle database connection errors
     echo "Connection failed: " . $e->getMessage();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,22 +48,18 @@ try {
     <title>PetsHub Admin Dashboard</title>
     <link rel="icon" href="images/adminIcon.png">
     <style>
-
-@font-face {
-    font-family:'Black';
-    src: url('../fonts/MPLUSRounded1c-Black.ttf');
-}
-
-@font-face {
-    font-family:'Medium';
-    src: url('../fonts/MPLUSRounded1c-Medium.ttf');
-}
-
-@font-face {
-    font-family:'ExtraBold';
-    src: url('../fonts/MPLUSRounded1c-ExtraBold.ttf');
-}
-
+        @font-face {
+            font-family: 'Black';
+            src: url('../fonts/MPLUSRounded1c-Black.ttf');
+        }
+        @font-face {
+            font-family: 'Medium';
+            src: url('../fonts/MPLUSRounded1c-Medium.ttf');
+        }
+        @font-face {
+            font-family: 'ExtraBold';
+            src: url('../fonts/MPLUSRounded1c-ExtraBold.ttf');
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -60,7 +69,6 @@ try {
             flex-direction: column;
             font-family: 'ExtraBold';
         }
-        
         .sidebar {
             width: 250px;
             background-color: #3D67FF;
@@ -159,17 +167,23 @@ try {
                 display: flex;
             }
         }
-        #home > h1{
+        #home > h1 {
             color: #3D67FF;
         }
-        .AddContainer{
-            display: flex;flex-direction: column;
-            padding: 2vw;gap: 2Vw;
+        .AddContainer {
+            display: flex;
+            flex-direction: column;
+            padding: 2vw;
+            gap: 2Vw;
         }
-        .AddContainer>button{
-            padding: 2vw;font-size: 2vw;
-            background-color: #3D67FF;border: none;border-radius: 1vw;
-            color: white;cursor: pointer;
+        .AddContainer>button {
+            padding: 2vw;
+            font-size: 2vw;
+            background-color: #3D67FF;
+            border: none;
+            border-radius: 1vw;
+            color: white;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -181,7 +195,7 @@ try {
         <ul class="menu">
             <li><a href="#" class="active" onclick="showSection(event, 'home')">Home</a></li>
             <li><a href="#" onclick="window.location.href = 'users.php'">Users</a></li>
-            <li><a href="#" onclick="window.location.href = 'products.html'">Products</a></li>
+            <li><a href="#" onclick="window.location.href = 'products.php'">Products</a></li>
             <li><a href="#" onclick="showSection(event, 'pets')">Pets</a></li>
             <li><a href="#" onclick="showSection(event, 'settings')">Settings</a></li>
             <li><a href="#">Log out</a></li>
@@ -194,8 +208,8 @@ try {
         <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
         <ul class="menu" id="topbarMenu">
             <li><a href="#" class="active" onclick="showSection(event, 'home')">Home</a></li>
-            <li><a href="#" onclick="window.location.href = 'users.php'">Users</li>
-            <li><a href="#" onclick="window.location.href = 'products.html'">Products</a></li>
+            <li><a href="#" onclick="window.location.href = 'users.php'">Users</a></li>
+            <li><a href="#" onclick="window.location.href = 'products.php'">Products</a></li>
             <li><a href="#" onclick="showSection(event, 'pets')">Pets</a></li>
             <li><a href="#" onclick="showSection(event, 'settings')">Settings</a></li>
             <li><a href="#">Log out</a></li>
@@ -207,15 +221,27 @@ try {
             <div class="dashboard-stats">
                 <div class="stat">
                     <h2>Total Products</h2>
-                    <?php     echo "<h1>{$numOfpro['product_count']}</h1>" ?>
+                    <?php echo "<h1>{$numOfpro['product_count']}</h1>" ?>
                 </div>
                 <div class="stat">
                     <h2>Total Users</h2>
-                    <?php     echo "<h1>{$result['user_count']}</h1>" ?>
+                    <?php echo "<h1>{$result['user_count']}</h1>" ?>
                 </div>
                 <div class="stat">
-                    <h2>Total Pets</h2>
-                    <p>10</p>
+                    <h2>Toys and Accessories</h2>
+                    <?php echo "<h1>{$toysResult['toys_count']}</h1>" ?>
+                </div>
+                <div class="stat">
+                    <h2>Grooming Supplies</h2>
+                    <?php echo "<h1>{$groomingResult['grooming_count']}</h1>" ?>
+                </div>
+                <div class="stat">
+                    <h2>Bedding and Comfort</h2>
+                    <?php echo "<h1>{$beddingResult['bedding_count']}</h1>" ?>
+                </div>
+                <div class="stat">
+                    <h2>Food and Feeding</h2>
+                    <?php echo "<h1>{$foodResult['food_count']}</h1>" ?>
                 </div>
             </div>
         </div>
@@ -236,11 +262,10 @@ try {
             <p>Adjust your settings here.</p>
                   
             <div class="AddContainer">
-                <button class="Add" onclick="window.location.href='addproduct.php'">add product</button>          
-                <button class="Add">add pet</button>               
+                <button class="Add" onclick="window.location.href='addproduct.php'">Add Product</button>          
+                <button class="Add">Add Pet</button>               
                 <button class="Add">Sells</button>
             </div>    
-
         </div>
     </div>
     <script>

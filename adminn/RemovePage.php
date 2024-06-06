@@ -8,7 +8,7 @@
     $stmt = $conn->prepare($removeQuerry);
     $stmt->bindParam(':user_id' , $user_id);
     $stmt->execute();
-    echo "<br><p class='errMessage'>tour removed succesfully</p>";
+    echo "<br><p class='errMessage'>user removed succesfully</p>";
     echo "<script>window.location.href= 'users.php'</script>";
 
     }catch(PDOException $e){
