@@ -1,37 +1,49 @@
 <?php
+session_start();
 
-  $servername = 'localhost';
-  $username = 'root';
-  $pass = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Database connection details
+    $servername = 'localhost';
+    $username = 'root';
+    $password = ""; // Replace with your database password
+    $dbname = 'petshub';
 
-  try {
-    $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    try {
+        $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE email = :email";
-    $stmt = $connection->prepare($sql);
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Check if the email exists in the database
+        $checkemail = "SELECT * FROM users WHERE email = :email";
+        $check = $connection->prepare($checkemail);
+        $check->bindParam(':email', $email);
+        $check->execute();
+        $user = $check->fetch(PDO::FETCH_ASSOC);
 
-    // Verify password
-    if ($user && password_verify($password, $user['password'])) {
-      // Start a session and store the user's ID
-      session_start();
-      $_SESSION['user_id'] = $user['id']; // Store user ID in session
+        if (empty($user)) {
+            echo json_encode(["msg" => "false"]); // User not found
+            exit;
+        }
+      
+  
 
-      // Redirect to home page
-      header("Location: ../html/home.html");
-      exit();
-    } else {
-      echo "Invalid email or password.";
+        // Verify the password
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_email'] = $user['email'];
+            echo json_encode(["msg" => "true"]);
+        } else {
+            echo json_encode(["msg" => "false" ]); // Incorrect password
+        }
+    } catch(PDOException $e) {
+        // Handle database errors gracefully
+        echo json_encode(["msg" => "error", "error" => $e->getMessage()]);
     }
-
-  } catch(PDOException $e) {
-    // Handle database errors gracefully
-    echo "Error: " . $e->getMessage(); // You can improve the error message for the user
-  }
+} else {
+    // Redirect to sign-up page if the request method is not POST
+    header("Location: ../html/signUp.html");
+    exit;
+}
 ?>

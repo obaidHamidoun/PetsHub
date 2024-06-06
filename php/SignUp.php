@@ -2,7 +2,7 @@
   // Check if form is submitted
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Print out $_POST array for debugging
-    print_r($_POST);
+    // print_r($_POST);
 
     // Database connection details
     $servername = 'localhost';
@@ -19,6 +19,17 @@
       $email = $_POST['email'];
       $phone = $_POST['phone'];
       $password = $_POST['password'];
+
+      $checkemail = "SELECT * FROM users WHERE email = '$email'";
+      $check = $connection->prepare($checkemail);
+      $check->execute();
+
+      $checkresults = $check->fetch(PDO::FETCH_ASSOC);
+      if(!empty($checkresults)){
+        echo "false";
+        die;
+      }
+
 
       // Password hashing
       $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -39,21 +50,18 @@
       // Execute the statement
       $stmt->execute();
 
-      // Start a session and store the user's ID (assuming you fetch the ID after inserting)
+      echo "true";
       session_start();
-      $_SESSION['user_id'] = $connection->lastInsertId(); // Store user ID in session
-      $_SESSION['signup_success'] = true;
 
-      // Redirect to home page
-      header("Location: ../html/home.html");
-      exit;
+      $_SESSION['user_id'] = $connection->lastInsertId();
+      $_SESSION['user_email'] = $email;
+
 
     } catch(PDOException $e) {
       // Handle database errors gracefully
       echo "Error: " . $e->getMessage(); // You can improve the error message for the user
     }
   } else {
-    // Redirect back to the sign-up page if the form is not submitted
     header("Location: ../html/signUp.html");
     exit;
   }
