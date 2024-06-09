@@ -23,7 +23,7 @@ try {
                     <div class='ProPrice'><p>{$groom['product_price']} MAD</p></div>
                     <div class='ProCat'><p>{$groom['product_category']}</p></div>
                     <div class='buyCart'>
-                        <button class='addToCart' proId='{$groom['product_id']}'>Add To Cart</button>
+                        <button class='addToCart' proId='{$groom['product_id']}' >Add To Cart</button>
                         <button class='BuyNow' proId='{$groom['product_id']}'>Buy now</button>
                     </div>
                 </div>";

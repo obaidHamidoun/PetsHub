@@ -708,7 +708,7 @@ nav{
     background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
 }
 .SettingsPage{
-    background:url('../svg/home/Settings.svg');
+    background:url('../svg/home/logoutIcon.svg');
     background-size: contain;background-repeat: no-repeat;background-position:50% 50%;
 }
 .page{
@@ -887,4 +887,64 @@ hr{
 .product-Pic{
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+/* Notification Container */
+#notification-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    pointer-events: none; /* Prevents interaction with the container */
+}
+
+/* Notification Box */
+.notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 500px;
+    background-color: #ffffff;
+    color: var(--main);
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    pointer-events: auto; /* Allows interaction with the box */
+    opacity: 1;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+/* Notification Box Types */
+.notification.success {
+    background-color: #28a745; /* Green */
+}
+
+.notification.error {
+    background-color: #dc3545; /* Red */
+}
+
+/* Fade-out animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .notification {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 }

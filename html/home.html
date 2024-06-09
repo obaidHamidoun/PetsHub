@@ -14,7 +14,9 @@
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
         <dotlottie-player src="https://lottie.host/3ba0221d-89e6-4669-a13c-225a73069cf7/ACDmsI1oFx.json" background="transparent" speed="1" style="width: 10vw; height: 10vw;" loop autoplay></dotlottie-player>
     </div>
-      
+    
+    <div id="notification-container"></div>
+
     <nav>
         <div class="headerOfNav">
             <div class="closeButton"></div>
@@ -38,9 +40,9 @@
                 <div class="PageIcon DayCarePage"></div>
                 <p>Daycare</p>
             </div>
-            <div class="page">
+            <div class="page LogoutButton">
                 <div class="PageIcon SettingsPage"></div>
-                <p>Settings</p>
+                <p>Log out</p>
             </div>
         </div>
     </nav>
@@ -128,9 +130,12 @@
         <input type="submit" value="Upload">
     </form>
 
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
+    
     document.querySelector('.UserPfp').addEventListener('click', function() {
         document.getElementById('profile_picture').click();
     });
@@ -142,10 +147,9 @@
         xhr.open('POST', '../php/uploadProfilePicture.php', true);
         xhr.onload = function() {
             if (xhr.status === 200) {
-                alert(xhr.responseText);
-                location.reload(); // Reload the page to reflect changes
+                showNotification('Profile Picture Was Updated Succesfully!', 'Success')
             } else {
-                alert('An error occurred: ' + xhr.responseText);
+                showNotification('an error occured when trying to upload the profile picture , please try again later !', 'Error :')
             }
         };
         xhr.onerror = function() {
@@ -198,4 +202,25 @@
         groomXML.onload = function(){
             document.querySelector('.groomingSUp').innerHTML += groomXML.responseText;
         }
+
+        function showNotification(message, type) {
+    const container = document.getElementById('notification-container');
+
+    const notification = document.createElement('div');
+    notification.classList.add('notification', type);
+    notification.innerText = message;
+
+    container.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => {
+            container.removeChild(notification);
+        }, 500);
+    }, 6000);
+}
+
+
+
     </script>
+    <script src="../js/checkuser.js"></script>

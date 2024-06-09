@@ -23,7 +23,7 @@ try {
                     <div class='ProPrice'><p>{$food['product_price']} MAD</p></div>
                     <div class='ProCat'><p>{$food['product_category']}</p></div>
                     <div class='buyCart'>
-                        <button class='addToCart' proId='{$food['product_id']}'>Add To Cart</button>
+                        <button class='addToCart' proId='{$food['product_id']}' >Add To Cart</button>
                         <button class='BuyNow' proId='{$food['product_id']}'>Buy now</button>
                     </div>
                 </div>";

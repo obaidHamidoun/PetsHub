@@ -3,6 +3,8 @@ const menu = document.querySelector('.menu');
 const close = document.querySelector('.close');
 const HomeMenu = document.querySelector('.HomeMenu');
 
+
+
 function toggleMenu() {
     if (window.innerWidth <= 700) {
         menu.classList.toggle('show');
