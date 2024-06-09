@@ -213,7 +213,14 @@ form.addEventListener('submit', function (event) {
         event.preventDefault();
     }
 });
+
+
+
+
+
 </script>
+
+<script src="../js/checkuser.js"></script>
 
 </body>
 </html>

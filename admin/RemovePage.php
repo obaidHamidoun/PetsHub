@@ -15,3 +15,5 @@
     echo "<script>alert('{$e->getMessage()}')</script>";
     }
    ?>
+
+<script src="../js/checkuser.js"></script>

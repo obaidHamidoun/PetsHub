@@ -192,6 +192,11 @@ try {
                 reader.readAsDataURL(file);
             }
         });
+
+
+
     </script>
+<script src="../js/checkuser.js"></script>
+
 </body>
 </html>

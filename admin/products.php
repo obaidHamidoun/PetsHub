@@ -196,6 +196,8 @@ try {
         });
     });
 </script>
+
+<script src="../js/checkuser.js"></script>
     
 </body>
 </html>

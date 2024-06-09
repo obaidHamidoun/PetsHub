@@ -176,6 +176,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 reader.readAsDataURL(file);
             }
         });
+
+
     </script>
+<script src="../js/checkuser.js"></script>
+
+
 </body>
 </html>

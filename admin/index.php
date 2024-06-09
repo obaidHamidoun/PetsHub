@@ -291,8 +291,12 @@ try {
             const menu = document.getElementById('topbarMenu');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
+
+
+
     </script>
 
+<script src="../js/checkuser.js"></script>
 
 
 </body>

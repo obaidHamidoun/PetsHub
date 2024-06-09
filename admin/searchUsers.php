@@ -59,3 +59,4 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
+<script src="../js/checkuser.js"></script>

@@ -187,7 +187,7 @@ try {
         </tbody>
     </table>
 </div>
-
+<script src="../js/checkuser.js"></script>
 <script>
     function searchUser(event) {
         event.preventDefault();
@@ -219,17 +219,9 @@ try {
     });
 </script>
 
+
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
