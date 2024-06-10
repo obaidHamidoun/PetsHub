@@ -27,7 +27,7 @@
         </div>
 
 
-        <div class="UserPfp" onclick=""></div>
+        <div class="UserPfp" onclick="document.getElementById('profile_picture').click()"></div>
 
 
         <p class="UserName">Username</p>
@@ -152,7 +152,8 @@
 
 </footer>
 
-<form id="uploadForm" enctype="multipart/form-data" style="display: none;">
+
+<form id="uploadForm" enctype="multipart/form-data" style="display: none;" action="../php/uploadProfilePicture.php" method="POST">
     <input type="file" name="profile_picture" id="profile_picture" accept="image/*" required>
     <input type="submit" value="Upload">
 </form>
@@ -230,12 +231,12 @@ fetch('../php/checkSession.php')
             const userId = data.userId;
             const userData = data.userData;
 
-            console.log('User ID:', userId);
-            console.log('User data:', userData);
+            // console.log('User ID:', userId);
+            // console.log('User data:', userData);
             document.querySelector('.UserName').innerHTML =  userData.first_name + ' ' + userData.last_name;
 
         } else {
-            console.log('User is not logged in');
+            // console.log('User is not logged in');
 
         }
     })
@@ -294,12 +295,6 @@ function showNotification(message, type) {
     }, 6000); // Notification will start to disappear after 6 seconds
 }
 
-// Attach event listener to all "Add to Cart" buttons
-document.querySelectorAll('.addToCart').forEach(button => {
-    button.addEventListener('click', () => {
-        showNotification('The product has been added to your cart!', 'success');
-    });
-});
 
 
 

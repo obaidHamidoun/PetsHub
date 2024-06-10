@@ -46,12 +46,12 @@ if (!checkLoginCookie()) {
     fetch('../php/checksession.php')
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        // console.log(data);
         if (data.loggedIn === true) {
-            console.log('logged in');
+            // console.log('logged in');
             const userId = data.userId;
             const userData = data.userData;
-            console.log(userData);
+            // console.log(userData);
 
             // Set profile picture
             const profilePicture = userData.profile_picture_base64;
@@ -69,7 +69,7 @@ if (!checkLoginCookie()) {
                 expireCookie('user_id');
                 expireCookie('user_email');
                 expireCookie('user_type');
-                console.log('Cookies expired');
+                // console.log('Cookies expired');
                 window.location.href = '../html/index.html';
             });
 
@@ -80,7 +80,7 @@ if (!checkLoginCookie()) {
             document.querySelector('.UserName').textContent = fullName;
             
         } else {
-            console.log('User is not logged in');
+            // console.log('User is not logged in');
         }
     })
     .catch(error => {

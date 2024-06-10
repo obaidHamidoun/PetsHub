@@ -3,13 +3,6 @@ try {
     $connection = new PDO("mysql:host=localhost;dbname=petshub", 'root', '');
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Check if user is logged in using cookie
-    if (!isset($_COOKIE['user_id'])) {
-        echo "Error: User not logged in.";
-        exit();
-    }
-
-    // Check if file is uploaded
     if (!isset($_FILES['profile_picture'])) {
         echo "Error: No file uploaded.";
         exit();
@@ -21,14 +14,14 @@ try {
     $fileType = $_FILES['profile_picture']['type'];
 
     // Check if the file is an image
-    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg'];
     if (!in_array($fileType, $allowedTypes)) {
-        echo "Error: Only JPG, PNG, and GIF files are allowed.";
+        echo "Error: Only JPG, PNG, SVG , and GIF files are allowed.";
         exit();
     }
 
     if ($fileSize > 0) {
-        $userId = $_COOKIE['user_id']; // Get user ID from cookie
+        $userId = $_COOKIE['user_id'];
         $fileContent = file_get_contents($fileTmpPath);
 
         $updatePfpQuery = "UPDATE users SET profile_picture = :profile_picture WHERE id = :id";
@@ -45,4 +38,5 @@ try {
 } catch (PDOException $err) {
     echo "Error: " . $err->getMessage();
 }
+
 ?>

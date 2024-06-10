@@ -21,7 +21,9 @@
         <div class="headerOfNav">
             <div class="closeButton"></div>
         </div>
-        <div class="UserPfp" onclick="document.getElementById('profilePictureInput').click();"></div>
+        
+        <div class="UserPfp" ></div>
+
         <p class="UserName">Username</p>
         <div class="pages">
             <div class="page">
@@ -125,7 +127,7 @@
         </div>
     </footer>
 
-       <form id="uploadForm" enctype="multipart/form-data" style="display: none;">
+       <form id="uploadForm" enctype="multipart/form-data" style="display: none;" action="../php/uploadProfilePicture.php" method="POST">
         <input type="file" name="profile_picture" id="profile_picture" accept="image/*" required>
         <input type="submit" value="Upload">
     </form>
@@ -221,6 +223,9 @@
     }, 6000);
 }
 
+document.querySelector('userPfp').addEventListener('click',()=>{
+    document.getElementById('profilePictureInput').click()
+})
 
 
     </script>
