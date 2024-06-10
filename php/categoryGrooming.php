@@ -24,7 +24,7 @@ try {
                     <div class='ProCat'><p>{$groom['product_category']}</p></div>
                     <div class='buyCart'>
                         <button class='addToCart' proId='{$groom['product_id']}' >Add To Cart</button>
-                        <button class='BuyNow' proId='{$groom['product_id']}'>Buy now</button>
+                        <button class='BuyNow' proId='{$groom['product_id']}' onclick=window.location.href=`productBuyPage.php?id={$groom['product_id']}`>Buy now</button>
                     </div>
                 </div>";
     }

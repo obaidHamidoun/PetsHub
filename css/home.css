@@ -922,11 +922,13 @@ hr{
 
 /* Notification Box Types */
 .notification.success {
-    background-color: #28a745; /* Green */
+    background-color: #6eff90 !important; /* Green */
+    color: white !important;
 }
 
 .notification.error {
-    background-color: #dc3545; /* Red */
+    background-color: #ff7987 !important; /* Red */
+    color: white !important;
 }
 
 /* Fade-out animation */

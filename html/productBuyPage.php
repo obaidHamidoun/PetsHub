@@ -1,3 +1,10 @@
+<?php
+$servername = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'petshub';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +13,6 @@
     <title>PetsHub</title>
     <link rel="icon" href="../images/index/whiteIcon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../css/index.css"> -->
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/shop.css">
 
@@ -63,33 +69,38 @@
     padding: 2vw;
     display: flex;flex-direction: column;
     justify-content: flex-end;
-    background: var(--main);
-    border: 2px var(--main) solid;
+    background: #ffffff66;
     overflow-wrap: break-word;
+    color: var(--main);
+    backdrop-filter: blur(4px);
 }
 .cartBUY{
     width: 50% !important;
 }
 .buyPr{
-    background: white;
-    color: var(--main)
+    background: var(--main);
+    color: white
 }
 .addc{
     background: none;
-    color: white;
-    border: 3px white solid;
+    color: var(--main);
+    border: 3px var(--main) solid;
 }
 .ProductName , .ProductPrice{
     font-size: 3.5vw;
 }
 .ProductDesc{
-    font-size: 1.7vw;
+    font-size: 1.1vw;
+    padding: 1vw;
 }
 .ProductCategory{
-    font-size: 1.4vw; 
+    font-size: 1.4vw;
 }
 .product{
     box-shadow: 0 0 9px 2px #e7e6e6;
+}
+.desc{
+    font-size: 1.5vw;
 }
 
 </style>
@@ -171,20 +182,47 @@
 
     <section class="BuyProduct">
 
-    <div class="productPic"></div>
+
+
+
+    <?php
     
-    <div class="productInfo">
-        <h1 class="ProductName">Product name</h1>
-        <small class="ProductCategory">category</small>
-        <div class="ProdDescDiv">
-        <p class="ProductDesc">usahuunassssssssssssssssssssssssssssssss</p>
+try {
+    $product_id = $_GET['id'];
+    $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql_product = "SELECT * FROM products WHERE product_id = $product_id";
+    $stmt_product = $connection->prepare($sql_product);
+    $stmt_product->execute();
+    $products = $stmt_product->fetchAll(PDO::FETCH_ASSOC);
+ 
+
+    foreach($products as $product){
+
+        $imageData = base64_encode($product['product_picture']);
+        $imageSrc = 'data:image/jpeg;base64,' . $imageData;
+
+        echo "
+        <div class='productPic' style='background:url({$imageSrc});background-size:cover'></div>
+        <div class='productInfo'>
+        <h1 class='ProductName'>{$product['product_name']}</h1>
+        <small class='ProductCategory'>{$product['product_category']}</small>
+        <div class='ProdDescDiv'><br>
+        <p class='ProductDesc'><span class='desc'>Description:</span><br>{$product['product_description']}</p>
         </div>
-        <h1 class="ProductPrice">11%</h1>
+        <h1 class='ProductPrice'>{$product['product_price']}MAD</h1>
         <div class='buyCart cartBUY'>
-                        <button class='BuyNow buyPr'>Buy now</button>
-                        <button class='addToCart addc' >Add To Cart</button>
-        </div>
-    </div>
+                        <button class='BuyNow buyPr'>Order now</button>
+                        <button class='addToCart addc' >Add To Cart</button></div></div>";
+    }
+
+}catch(PDOException $e){
+        echo "<script>console.log({$e->getMessage()})</script>";
+    }
+    ?>
+    
+
 
     </section>
 
@@ -352,6 +390,7 @@ function showNotification(message, type) {
 document.querySelectorAll('.addToCart').forEach(button => {
     button.addEventListener('click', () => {
         showNotification('The product has been added to your cart!', 'success');
+        alert('cat')
     });
 });
 
