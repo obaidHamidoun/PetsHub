@@ -189,6 +189,8 @@ $dbname = 'petshub';
     
 try {
     $product_id = $_GET['id'];
+    $user_id = $_COOKIE['user_id'];
+
     $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -213,13 +215,15 @@ try {
         </div>
         <h1 class='ProductPrice'>{$product['product_price']}MAD</h1>
         <div class='buyCart cartBUY'>
-                        <button class='BuyNow buyPr'>Order now</button>
+                        <button class='BuyNow buyPr' onclick=window.location.href='checkBuy.php?product_id={$product_id}&&user_id={$user_id}'>Order now</button>
                         <button class='addToCart addc' >Add To Cart</button></div></div>";
     }
 
 }catch(PDOException $e){
         echo "<script>console.log({$e->getMessage()})</script>";
     }
+
+
     ?>
     
 

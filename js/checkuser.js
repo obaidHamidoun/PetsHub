@@ -15,7 +15,7 @@ function checkUser() {
         }
     } else if (userType === 'client') {
         // User is client
-        if (currentPage !== '/PetsHub/html/home.html'  && currentPage !== '/PetsHub/html/shop.html' && currentPage !== '/PetsHub/html/productBuyPage.php') {
+        if (currentPage !== '/PetsHub/html/home.html'  && currentPage !== '/PetsHub/html/shop.html' && currentPage !== '/PetsHub/html/productBuyPage.php' &&  currentPage !== '/PetsHub/html/checkBuy.php') {
             window.location.href = '/PetsHub/html/home.html';
         }
     }

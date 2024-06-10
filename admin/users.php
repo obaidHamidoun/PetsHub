@@ -203,14 +203,27 @@ try {
         xhr.send();
     }
 
+    function searchUser(event) {
+        event.preventDefault();
+        const query = document.getElementById('searchUser').value.trim();
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'searchUsers.php?searchUser=' + encodeURIComponent(query), true);
+        xhr.onload = function() {
+            if (this.status == 200) {
+                document.getElementById('searchResults').innerHTML = this.responseText;
+            }
+        }
+        xhr.send();
+    }
+
     document.getElementById('searchUser').addEventListener('input', function() {
         const query = this.value.trim().toLowerCase();
         const rows = document.querySelectorAll('.UsersTable tbody tr');
         
         rows.forEach(row => {
-            const name = row.cells[1].textContent.trim().toLowerCase();
-            const email = row.cells[3].textContent.trim().toLowerCase();
-            if (name.includes(query) || email.includes(query)) {
+            const userId = row.cells[0].textContent.trim().toLowerCase();
+            if (userId.includes(query)) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';

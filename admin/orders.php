@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products Table</title>
+    <title>Orders Table</title>
     <link rel="icon" href="images/adminIcon.png">
     <style>
-                @font-face {
+           @font-face {
     font-family:'Black';
     src: url('../fonts/MPLUSRounded1c-Black.ttf');
 }
@@ -123,77 +123,81 @@ body {
 </div>
 
 <form name="searchForm" class="searchForm">
-    <input type="text" name="searchProduct" id="searchProduct" placeholder="Search by name or category">
+    <input type="text" name="searchOrder" id="searchOrder" placeholder="Search by user or status">
 </form>
 
-    <div class="table-container">
-        <table class="ProductsTable">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Picture</th>
-                    <th>Edit</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-             
-<?php
-$servername = 'localhost';
-$username = 'root';
-$pass = "";
+<div class="table-container">
+    <table class="OrdersTable">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Status</th>
+                <th>User ID</th>
+                <th>Product ID</th>
+                <th>User Location</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $servername = 'localhost';
+            $username = 'root';
+            $pass = "";
 
-try {
-    $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            try {
+                $connection = new PDO("mysql:host=$servername;dbname=petshub", $username, $pass);
+                $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT * FROM products";
-    $stmt = $connection->prepare($sql);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $sql = "SELECT * FROM orders";
+                $stmt = $connection->prepare($sql);
+                $stmt->execute();
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach($results as $result){
-        $imageData = base64_encode($result['product_picture']);
-        $imageSrc = 'data:image/jpeg;base64,' . $imageData;
+                foreach($results as $result){
+                    echo "<tr>
+                        <td>{$result['order_id']}</td>
+                        <td>{$result['order_date']}</td>
+                        <td>{$result['order_status']}</td>
+                        <td>{$result['user_id']}</td>
+                        <td>{$result['product_id']}</td>
+                        <td>{$result['user_location']}</td>
+                        <td><button class='edit'><a href='editOrder.php?id={$result['order_id']}' >Edit</a></button></td>
+                        <td><button class='remove'><a href='removeOrder.php?id={$result['order_id']}'>Remove</a></button></td>
+                    </tr>";
+                }
 
-        echo "<tr>
-            <td>{$result['product_id']}</td>
-            <td>{$result['product_name']}</td>
-            <td>{$result['product_description']}</td>
-            <td>{$result['product_category']}</td>
-            <td>{$result['product_price']} dh</td>
-            <td><img src='{$imageSrc}' alt='Product Image'></td>
-            <td><button class='edit'><a href='editProduct.php?id={$result['product_id']}' >Edit</a></button></td>
-            <td><button class='remove'><a href='removeProduct.php?id={$result['product_id']}'>Remove</a></button></td>
-        </tr>";
-    }
-
-} catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-?>
-            </tbody>
-        </table>
-    </div>
-
-    <script>
-    document.getElementById('searchProduct').addEventListener('input', function() {
-        const query = this.value.trim().toLowerCase();
-        const rows = document.querySelectorAll('.ProductsTable tbody tr');
-        
-        rows.forEach(row => {
-            const productId = row.cells[0].textContent.trim().toLowerCase();
-            if (productId.includes(query)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
+            } catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
             }
-        });
+            ?>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    // jQuery functions for any additional functionality
+});
+</script>
+
+<script>
+document.getElementById('searchOrder').addEventListener('input', function() {
+    const query = this.value.trim().toLowerCase();
+    const rows = document.querySelectorAll('.OrdersTable tbody tr');
+    
+    rows.forEach(row => {
+        const userId = row.cells[3].textContent.trim().toLowerCase();
+        const status = row.cells[2].textContent.trim().toLowerCase();
+        if (userId.includes(query) || status.includes(query)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
     });
+});
 </script>
 
 <script src="../js/checkuser.js"></script>

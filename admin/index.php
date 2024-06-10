@@ -206,7 +206,7 @@ try {
             <li><a href="#" class="active" onclick="showSection(event, 'home')">Home</a></li>
             <li><a href="#" onclick="window.location.href = 'users.php'">Users</a></li>
             <li><a href="#" onclick="window.location.href = 'products.php'">Products</a></li>
-            <li><a href="#" onclick="showSection(event, 'pets')">Pets</a></li>
+            <li><a href="#" onclick="window.location.href = 'orders.php'">orders</a></li>
             <li><a href="#" onclick="showSection(event, 'settings')">Settings</a></li>
             <li><a href="logout.php">Log out</a></li>
         </ul>
@@ -220,7 +220,7 @@ try {
             <li><a href="#" class="active" onclick="showSection(event, 'home')">Home</a></li>
             <li><a href="#" onclick="window.location.href = 'users.php'">Users</a></li>
             <li><a href="#" onclick="window.location.href = 'products.php'">Products</a></li>
-            <li><a href="#" onclick="showSection(event, 'pets')">Pets</a></li>
+            <li><a href="#" onclick="window.location.href = 'orders.php'">orders</a></li>
             <li><a href="#" onclick="showSection(event, 'settings')">Settings</a></li>
             <li><a href="logout.php">Log out</a></li>
         </ul>
@@ -269,12 +269,10 @@ try {
         </div>
         <div id="settings" class="section" style="display:none;">
             <h1>Settings</h1>
-            <p>Adjust your settings here.</p>
+            <p>Adjust the settings :</p>
                   
             <div class="AddContainer">
                 <button class="Add" onclick="window.location.href='addproduct.php'">Add Product</button>          
-                <button class="Add">Add Pet</button>               
-                <button class="Add">Sells</button>
             </div>    
         </div>
     </div>
