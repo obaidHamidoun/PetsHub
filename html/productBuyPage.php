@@ -136,12 +136,8 @@ $dbname = 'petshub';
                 <p>Shop</p>
             </div>
             <div class="page">
-                <div class="PageIcon CartPage"></div>
-                <p>Cart</p>
-            </div>
-            <div class="page">
                 <div class="PageIcon DayCarePage"></div>
-                <p>Daycare</p>
+                <p>Settings</p>
             </div>
             <div class="page LogoutButton">
                 <div class="PageIcon SettingsPage"></div>
@@ -215,8 +211,7 @@ try {
         </div>
         <h1 class='ProductPrice'>{$product['product_price']}MAD</h1>
         <div class='buyCart cartBUY'>
-                        <button class='BuyNow buyPr' onclick=window.location.href='checkBuy.php?product_id={$product_id}&&user_id={$user_id}'>Order now</button>
-                        <button class='addToCart addc' >Add To Cart</button></div></div>";
+                        <button class='BuyNow buyPr' onclick=window.location.href='checkBuy.php?product_id={$product_id}&&user_id={$user_id}'>Order now</button>";
     }
 
 }catch(PDOException $e){
@@ -390,13 +385,6 @@ function showNotification(message, type) {
     }, 6000); // Notification will start to disappear after 6 seconds
 }
 
-// Attach event listener to all "Add to Cart" buttons
-document.querySelectorAll('.addToCart').forEach(button => {
-    button.addEventListener('click', () => {
-        showNotification('The product has been added to your cart!', 'success');
-        alert('cat')
-    });
-});
 
 
 

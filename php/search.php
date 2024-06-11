@@ -38,7 +38,7 @@ try {
                        <div class='ProPrice'><p>{$product_price} MAD</p></div>
                        <div class='ProCat'><p>{$product_category}</p></div>
                        <div class='buyCart'>
-                           <button class='addToCart' proId='{$product_id}' >Add To Cart</button>
+
                            <button class='BuyNow' proId='{$product_id}' onclick=window.location.href=`productBuyPage.php?id={$product_id}`>Buy now</button>
                        </div>
                        </div>";
@@ -48,3 +48,6 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
+
+
+<!-- <button class='addToCart' proId='{$product_id}' >Add To Cart</button> -->

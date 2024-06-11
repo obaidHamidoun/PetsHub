@@ -164,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             if (file) {
                 if (!file.type.startsWith('image/')) {
                     alert('Please upload a valid image file.');
-                    event.target.value = ''; // Clear the file input
+                    event.target.value = '';
                     return;
                 }
                 const reader = new FileReader();

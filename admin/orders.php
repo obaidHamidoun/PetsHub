@@ -177,11 +177,11 @@ body {
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<!-- <script>
 $(document).ready(function(){
     // jQuery functions for any additional functionality
 });
-</script>
+</script> -->
 
 <script>
 document.getElementById('searchOrder').addEventListener('input', function() {

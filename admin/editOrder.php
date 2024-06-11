@@ -130,9 +130,5 @@ try {
             <button type="submit" class="submit-btn" name="submit">Submit</button>
         </form>
     </div>
-
-    <script>
-        // JavaScript code
-    </script>
 </body>
 </html>
