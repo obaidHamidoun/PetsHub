@@ -1,0 +1,130 @@
+:root{
+    --main:#FFA63D !important;
+}
+
+@keyframes searchslide {
+    0%{transform: translate(0, -110vh);}
+100%{transform: translate(0, 0);}
+}
+@keyframes searchslideBack {
+    0%{transform: translate(0, 0);}
+    100%{transform: translate(0, -110vh);}
+}
+
+@media (max-width:600px) {
+    .closeSearchButton {
+        width: 6vw !important;
+        height: 6vw !important;
+    }
+    .searchPage{
+        padding: 8vw !important;
+    }
+    .searchInput {
+        gap: 2vw !important;
+        padding: 2vw;
+    }
+    .searchProductInput {
+        width: 100% !important;
+        padding: 1vw 5vw 1vw 2.5vw !important;
+    }
+    .searchButton {
+        height: 7vw !important;
+        width: 7vw !important;
+    }
+    .searchInput{
+        margin-top: 4vw;
+    }
+}
+.ProCat>p{
+    color: #FF6C3D !important;
+}
+.menuButton{
+    background: url(../svg/shop/menuOrange.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.shopLogo {
+    background: url(../images/shop/orangeLogo.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    transition: background 0.2s !important;
+    cursor: pointer !important;
+}
+.shopLogo:hover{
+    animation : shake 0.4s ease;
+    background:url('../images/shop/OrangeFullLogo.png') !important;
+background-repeat:no-repeat !important;background-size:contain !important;
+}
+.page:hover{
+    background:linear-gradient(90deg, rgb(135 161 255 / 0%) 0%, #ff8000a8 20%, rgb(99 128 235 / 0%) 100%) !important
+}
+.product{
+    background: linear-gradient(white 45%, #fff0d6 150%) !important;
+}
+.BuyNow:active{
+    box-shadow: 0px 0px 10px 2px var(--main);
+    color:var(--main);border:1px var(--main);background-color:white;
+}
+.addToCart:active{
+    box-shadow: 0px 0px 10px 2px var(--main);
+}
+.ContainerOfMenuAndSearch{
+    height: 100% ; width: auto;gap: 2vw;
+    display: flex;flex-direction: row;justify-content: space-between;align-items: center;
+}
+.searchIcon{
+    background: url(../svg/shop/Search.svg) !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    transition: background 0.2s !important;
+    cursor: pointer !important;
+    margin-bottom: 0.5vw;
+}
+.searchPage{
+    width: 100vw;height: 100vh;
+    position: absolute;z-index: 5;
+    background-color: white;display: flex;flex-direction: column;
+    top: 0;padding: 4vw;
+    transform: translate(0, -110vh)
+}
+.searchInput{
+    display: flex;
+    align-items: center;justify-content: center;
+    gap: 1vw;
+}
+.searchProductInput{
+    padding: 0.5vw 5vw 0.5vw 2.5vw;
+    border-radius: 100vw;border: 0.4vw var(--main) solid;
+    width: 50%;
+}
+.searchProductInput::placeholder{
+    color:#FFCA7A;
+}
+.searchButton{
+    background: url(../svg/shop/Search.svg) !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    transition: background 0.2s !important;
+    background-position: 50% 50%;
+    cursor: pointer !important;
+    margin-bottom: 0.5vw;height: 3.5vw;
+    width: 3.5vw;
+    border: none;padding: 0;margin: 0;
+}
+.closeDiv{
+    width: 100%;height: 5vw;
+    display: flex;justify-content: flex-end;
+}
+.closeSearchButton{
+    width: 3vw;height: 3vw;
+    background: url('../svg/shop/Orangeclose.svg');
+    background-repeat: no-repeat;background-size: contain;
+    transition: all 0.3s;cursor: pointer;
+}
+.closeSearchButton:hover{
+    transform: rotate(90deg);
+}
+.searchPage>h1{
+    text-align: center;color: var(--main);
+    font-size: 3.2vw;font-family: 'ExtraBold';
+}
